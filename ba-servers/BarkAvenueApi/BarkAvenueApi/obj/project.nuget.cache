@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+efNJybYkGxzpnHfS5dYGnlkClueqlD1Ek3nfd4uYmri4UNoUlFyknOroegp9xJpLi6l76ISgLfu1w3q9GiDZw==",
+  "dgSpecHash": "5zzC8k5xjTTCExM+K1sBsOAIyCEOVSINponn8ByYj7jX2fJ2eun1XEIaSJb2gBbdTHg319JTBMylK2lJsEWYLA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\user\\Desktop\\repos\\BarkAvenueApi\\BarkAvenueApi\\BarkAvenueApi.csproj",
+  "projectFilePath": "C:\\Users\\user\\Source\\Repos\\Bark-Avenue\\ba-servers\\BarkAvenueApi\\BarkAvenueApi\\BarkAvenueApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
