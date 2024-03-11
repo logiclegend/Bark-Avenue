@@ -23,20 +23,20 @@
        column-gap: toRem(50);
     }
  
-    // .footer__information
-    &__information {}
+   //  // .footer__information
+   //  &__information {}
  
-    // .footer__personal-office
-    &__personal-office {}
+   //  // .footer__personal-office
+   //  &__personal-office {}
  
-    // .footer__support
-    &__support {}
+   //  // .footer__support
+   //  &__support {}
  
-    // .footer__contacts
-    &__contacts {}
+   //  // .footer__contacts
+   //  &__contacts {}
  
-    // .footer__social
-    &__social {}
+   //  // .footer__social
+   //  &__social {}
  }
  
  .header {
@@ -80,10 +80,17 @@
  
     // .information__link
     &__link {
-       color: rgba(white, 80%);
-       font-size: toRem(12);
-       font-weight: 500;
-       line-height: 100%;
+      color: rgba(white, 80%);
+      font-size: toRem(12);
+      font-weight: 500;
+      line-height: 100%;
+      transition: all 0.2s ease-in-out;
+      
+      &:hover{
+         color: white;
+         text-decoration: underline;
+      }
+      
  
     }
  }

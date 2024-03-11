@@ -1,18 +1,18 @@
 <header data-scroll="60" class="header">
 	<div class="header__container">
 		<div class="header__logo logo">
-			<a href="home.html" class="logo__link"><img src="assets/images/icons/logo.svg" alt="Image"></a>
+			<a routerLink="/home" class="logo__link"><img src="assets/images/icons/logo.svg" alt="Image"></a>
 		</div>
 		<div data-da=".header__container, 767.98" class="header__menu menu">
 			<button type="button" class="menu__icon icon-menu"><span></span></button>
 			<nav class="menu__body">
 				<ul class="menu__list">
-					<li class="menu__item"><a href="#" class="menu__link">Форум<span></span></a></li>
-					<li class="menu__item"><a href="#" class="menu__link">Контакти<span></span></a></li>
-					<li class="menu__item"><a href="#" class="menu__link">Поради<span></span></a></li>
-					<li class="menu__item"><a href="#" class="menu__link">Загублені<span></span></a></li>
-					<li class="menu__item"><a href="#" class="menu__link">Карта<span></span></a></li>
-					<li class="menu__item"><a href="#" class="menu__link">Породи<span></span></a></li>
+					<li class="menu__item"><a routerLink="/forum" class="menu__link">Форум<span></span></a></li>
+					<li class="menu__item"><a routerLink="/contacts" class="menu__link">Контакти<span></span></a></li>
+					<li class="menu__item"><a routerLink="/advice" class="menu__link">Поради<span></span></a></li>
+					<li class="menu__item"><a routerLink="/lost" class="menu__link">Загублені<span></span></a></li>
+					<li class="menu__item"><a routerLink="/map" class="menu__link">Карта<span></span></a></li>
+					<li class="menu__item"><a routerLink="/breeds" class="menu__link">Породи<span></span></a></li>
 				</ul>
 			</nav>
 		</div>
