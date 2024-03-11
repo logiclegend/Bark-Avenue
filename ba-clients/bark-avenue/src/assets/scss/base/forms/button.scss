@@ -1,0 +1,71 @@
+//<BUTTONS (a.btn+tab)>
+// Сніппет (HTML): btn
+
+.button {
+	display: inline-block;
+	padding: toRem(20);
+	color: white;
+	font-weight: 700;
+	font-size: toRem(16);
+	line-height: 1.25;
+
+	min-width: toRem(200);
+
+	background: linear-gradient(to right, #D41818, $mainOrangeColor, #fff700);
+	border-radius: toRem(30);
+
+	text-align: center;
+
+	box-shadow: 2px 4px 4px rgba(black, 0.25);
+
+	@media (any-hover: hover) {
+		&:hover {}
+	}
+
+	&--fw {
+		width: 100%;
+	}
+
+	&--transparent {
+		background: url('../../../images/icons/btn_back.svg') center no-repeat;
+		box-shadow: none;
+		filter: drop-shadow(2px 4px 4px rgba(black, 0.25));
+		// background: $mainOrangeColor;
+		// color: White;
+
+	}
+
+	&--dark {
+		max-width: toRem(230);
+		padding: toRem(10) toRem(70) toRem(10) toRem(15);
+		color: white;
+		background-color: $mainColor;
+		font-size: toRem(20);
+		font-weight: 600;
+		line-height: toRem(24);
+		position: relative;
+
+
+		&::after {
+			content: '';
+			background-image: url("../../../images/icons/arrow.svg");
+			width: 36px;
+			height: 30px;
+			margin-right: 15px;
+			position: absolute;
+			top: 30%;
+			right: 0;
+		}
+	}
+
+
+	// @media (max-width: toEm(479.98)) {
+	// 	width: 100%;
+	// }
+}
+
+.grad-text {
+	background-image: $gradient;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
