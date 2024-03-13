@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 namespace BarkAvenueApi.Controllers
 {
     [ApiController]
-    [Route("api/dogs")]
+    [Route("api/dogsbreeds")]
     public class DogsBreeds : ControllerBase
     {
         private static List<string> DogBreeds = new List<string>
@@ -64,3 +64,5 @@ namespace BarkAvenueApi.Controllers
         }
     }
 }
+
+//але останній раз все процювало добре, чи може бути така що це сталось через додавання гітігнор?
