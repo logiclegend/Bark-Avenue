@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 namespace BarkAvenueApi.Controllers
 {
     [ApiController]
-    [Route("api/dogs")]
+    [Route("api/dogsbreeds")]
     public class DogsBreeds : ControllerBase
     {
         private static List<string> DogBreeds = new List<string>
