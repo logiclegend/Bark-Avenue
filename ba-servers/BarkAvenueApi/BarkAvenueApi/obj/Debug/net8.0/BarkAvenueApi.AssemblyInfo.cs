@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BarkAvenueApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6f759a427ca9b1c43876ee2394a7c80a46cd5059")]
 [assembly: System.Reflection.AssemblyProductAttribute("BarkAvenueApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BarkAvenueApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
