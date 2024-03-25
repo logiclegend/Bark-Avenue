@@ -1,6 +1,6 @@
 ﻿namespace BarkAvenueApi.Models
 {
-    public  static class UserMapper
+    public static class UserMapper
     {
         public static User MapFromRegistrationDTO(RegistrationDTO registrationDTO)
         {
