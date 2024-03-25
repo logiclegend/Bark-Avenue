@@ -1,3 +1,6 @@
+using BarkAvenueApi.Helpter;
+using BarkAvenueApi.Service;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +9,11 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+//Я підключаю
+builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSetting"));
+builder.Services.AddTransient<IEmailService, EmailService>();
+
 
 var app = builder.Build();
 
