@@ -12,5 +12,6 @@
         public DateTimeOffset last_login { get; set; }
         public bool is_active { get; set; }
         public string permission_user { get; set; }
+        public string? password { get; internal set; }
     }
 }
