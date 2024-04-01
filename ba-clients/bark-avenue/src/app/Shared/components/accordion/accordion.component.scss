@@ -1,0 +1,36 @@
+@use "./../site-footer/site-footer.component.scss";
+@use "global";
+
+.container {
+    width: 100%;
+}
+
+.header {
+    // border-bottom: 1px solid black;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    height: 3rem;
+    width: 100%;
+    align-items: center;
+    padding: 0.625rem 0.3125rem 0.625rem 0.3125rem;
+    // background-color: #ff8000;
+    // border-radius: 5px;
+}
+.angle {
+    font-size: 1.5rem;
+    color: white;
+
+    &--up {
+    }
+}
+
+._icon-angle.angle--up::before {
+    transform: rotateX(180deg);
+}
+
+.body {
+    padding: 0.9375rem 0.3125rem 0.9375rem 0.3125rem;
+}

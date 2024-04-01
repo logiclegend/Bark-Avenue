@@ -34,6 +34,13 @@
                 "output": "/assets/"
               }
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/assets/scss/base/forms",
+                "src/assets/scss",
+                "src/assets/images/img"
+              ]
+            },
             "styles": [
               "src/styles.scss"
             ],

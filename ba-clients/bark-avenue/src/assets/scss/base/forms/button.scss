@@ -9,9 +9,8 @@
 	font-size: toRem(16);
 	line-height: 1.25;
 
-	min-width: toRem(200);
-
-	background: linear-gradient(to right, #D41818, $mainOrangeColor, #fff700);
+	width: toRem(200);
+	background: linear-gradient(to right, #d41818, $mainOrangeColor, #fff700);
 	border-radius: toRem(30);
 
 	text-align: center;
@@ -19,7 +18,8 @@
 	box-shadow: 2px 4px 4px rgba(black, 0.25);
 
 	@media (any-hover: hover) {
-		&:hover {}
+		&:hover {
+		}
 	}
 
 	&--fw {
@@ -27,12 +27,10 @@
 	}
 
 	&--transparent {
-		background: url('../../../images/icons/btn_back.svg') center no-repeat;
+		background: transparent;
 		box-shadow: none;
 		filter: drop-shadow(2px 4px 4px rgba(black, 0.25));
-		// background: $mainOrangeColor;
-		// color: White;
-
+		border: 2px solid $mainOrangeColor;
 	}
 
 	&--dark {
@@ -45,9 +43,8 @@
 		line-height: toRem(24);
 		position: relative;
 
-
 		&::after {
-			content: '';
+			content: "";
 			background-image: url("../../../images/icons/arrow.svg");
 			width: 36px;
 			height: 30px;
@@ -57,7 +54,6 @@
 			right: 0;
 		}
 	}
-
 
 	// @media (max-width: toEm(479.98)) {
 	// 	width: 100%;

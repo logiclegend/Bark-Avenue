@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -7,6 +7,8 @@ import { SiteHeaderComponent } from './Shared/components/site-header/site-header
 import { SiteFooterComponent } from './Shared/components/site-footer/site-footer.component';
 import { AppRoutingModule } from './app-routing.module';
 import { EmptyPageComponent } from './pages/empty-page/empty-page.component';
+import { AccordionComponent } from './Shared/components/accordion/accordion.component';
+import { SwiperComponent } from './Shared/components/swiper/swiper.component';
 
 @NgModule({
   declarations: [
@@ -14,12 +16,16 @@ import { EmptyPageComponent } from './pages/empty-page/empty-page.component';
     HomeComponent,
     SiteHeaderComponent,
     SiteFooterComponent,
-    EmptyPageComponent
+    EmptyPageComponent,
+    AccordionComponent,
+    SwiperComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA],
+
   providers: [],
   bootstrap: [AppComponent]
 })
