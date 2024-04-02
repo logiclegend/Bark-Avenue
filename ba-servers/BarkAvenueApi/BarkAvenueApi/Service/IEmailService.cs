@@ -1,4 +1,4 @@
-﻿using BarkAvenueApi.Helpter;
+﻿using BarkAvenueApi.Email;
 
 namespace BarkAvenueApi.Service
 {
@@ -7,3 +7,4 @@ namespace BarkAvenueApi.Service
         Task SendEmailAsync(Mailrequest mailrequest);
     }
 }
+

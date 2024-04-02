@@ -1,4 +1,4 @@
-using BarkAvenueApi.Helpter;
+using BarkAvenueApi.Email;
 using BarkAvenueApi.Service;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,7 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 //Я підключаю
-builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSetting"));
+builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
 builder.Services.AddTransient<IEmailService, EmailService>();
 
 
