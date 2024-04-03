@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BarkAvenueApi.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class CustomerController : ControllerBase
 {
     private readonly IEmailService emailService;
@@ -21,7 +23,7 @@ namespace BarkAvenueApi.Controllers
             Mailrequest mailrequest = new Mailrequest();
             mailrequest.ToEmail = "logiclegends936@gmail.com";
             mailrequest.Subject = "Welcome to logiclegends";
-            mailrequest.Body = "HI";
+            mailrequest.Body = "Authentication is successful";
             await emailService.SendEmailAsync(mailrequest);
             return Ok();
         }
