@@ -1,0 +1,30 @@
+
+<div class="content">
+    <div class="row">
+        <div class="col">
+            <h1 class="title">Зареєструватися</h1>
+            <span class="caption">Увійти як користувач</span>
+            <ul class="social">
+                <li class="social__item"><a href="#" class="social__link _icon-instagram"></a></li>
+                <li class="social__item"><a href="#" class="social__link _icon-facebook"></a></li>
+                <li class="social__item"><a href="#" class="social__link _icon-twitter"></a></li>
+                <li class="social__item"><a href="#" class="social__link _icon-youtube"></a></li>
+            </ul>
+            <form action="registration">
+                <fieldset class="registration__inputs">
+                    <input class="registration__input-name" type="text" placeholder="name">
+                    <input class="registration__input-email" type="email" placeholder="@email">
+                    <input class="registration__input-password" type="password" placeholder="password">
+                    <button class="registration__button button" type="submit">Зареєструватися</button>
+                </fieldset>
+            </form>
+        </div>
+        <div class="col">
+            <div class="ref-part">
+                <span class="ref-part__title">РАДІ ТЕБЕ ЗНОВУ БАЧИТИ!</span>
+                 <button (click)="modalService.open('modal-1')" class="ref-part__link">Увійти</button>
+            </div>
+        </div>
+    </div>
+</div>
+

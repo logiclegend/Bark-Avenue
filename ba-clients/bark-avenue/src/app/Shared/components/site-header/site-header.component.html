@@ -13,12 +13,20 @@
 					<li class="menu__item"><a routerLink="/lost" class="menu__link">Загублені<span></span></a></li>
 					<li class="menu__item"><a routerLink="/map" class="menu__link">Карта<span></span></a></li>
 					<li class="menu__item"><a routerLink="/breeds" class="menu__link">Породи<span></span></a></li>
-					<li *ngIf="isMobile" class="menu__item"><a routerLink="/breeds" class="menu__link">Особистий кабінет</a></li>
+					<li *ngIf="isMobile" class="menu__item"><a routerLink="/account" class="menu__link">Особистий кабінет</a></li>
 				</ul>
 			</nav>
 		</div>
 		<div *ngIf="!isMobile" class="header__user-block user-block">
-			<a href="#" class="user-block__user-icon _icon-user"></a>
+			<button type="button" (click)="modalService.open('modal-1')"  class="user-block__user-icon _icon-user"></button>
 		</div>
 	</div>
 </header>
+
+<app-modal id="modal-2">
+	<app-registration></app-registration>
+</app-modal>
+
+<app-modal id="modal-1">
+	<app-login></app-login>
+</app-modal>

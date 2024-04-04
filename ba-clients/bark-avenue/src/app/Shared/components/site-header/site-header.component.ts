@@ -1,4 +1,6 @@
-import { Component , OnInit , HostListener } from '@angular/core';
+import { Component , OnInit , HostListener, TemplateRef } from '@angular/core';
+import { Action } from 'rxjs/internal/scheduler/Action';
+import { ModalService } from '../../services/modal.service';
 
 
 @Component({
@@ -9,6 +11,9 @@ import { Component , OnInit , HostListener } from '@angular/core';
 export class SiteHeaderComponent implements OnInit {
   isMobile: boolean = false;
   active : boolean = false;
+
+  constructor(protected modalService: ModalService) {}
+  
 
   ngOnInit(){
     this.chekScreenSize();
