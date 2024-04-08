@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using System.IO;
 
 namespace BarkAvenueApi.Models
 {
@@ -10,14 +12,19 @@ namespace BarkAvenueApi.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
+                IConfigurationRoot configuration = new ConfigurationBuilder()
+                    .SetBasePath(Directory.GetCurrentDirectory())
+                    .AddJsonFile("appsettings.json")
+                    .Build();
 
-                optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=BarkAvenue;Username=postgres;Password=2005;");
+                string connectionString = configuration.GetConnectionString("DefaultConnection");
+                optionsBuilder.UseNpgsql(connectionString);
             }
         }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<User>().HasKey(u => u.user_id);
+            modelBuilder.Entity<User>().HasKey(u => u.UserId);
         }
-
     }
 }
