@@ -6,10 +6,10 @@
         {
             return new User
             {
-                username = registrationDTO.Username,
-                email = registrationDTO.Email,
-                phone_number = registrationDTO.Phone_number,
-                password_user = registrationDTO.Password_user
+                Username = registrationDTO.Username,
+                Email = registrationDTO.Email,
+                PhoneNumber = registrationDTO.Phone_number,
+                PasswordUser = registrationDTO.Password_user
             };
         }
     }
