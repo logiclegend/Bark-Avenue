@@ -1,7 +1,9 @@
 using BarkAvenueApi.Email;
 using BarkAvenueApi.Service;
+using BarkAvenueApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+
 
 // Add services to the container.
 
@@ -10,12 +12,17 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//Я підключаю
+//Я підключаю Email
 builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
 builder.Services.AddTransient<IEmailService, EmailService>();
 
+// Registration
+builder.Services.AddTransient<IUserRegistrationServiceMarta, UserRegistrationServiceMarta>();
+
 
 var app = builder.Build();
+
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -31,4 +38,3 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-
