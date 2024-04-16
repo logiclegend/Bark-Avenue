@@ -23,7 +23,7 @@ namespace BarkAvenueApi.Models
         public string? Password_user { get; set; }
 
         [Required(ErrorMessage = "Confirm Password is required")]
-        [Compare("Password", ErrorMessage = "Password and Confirm Password must match")]
+        [Compare("Password_user", ErrorMessage = "Password and Confirm Password must match")]
         public string? Confirm_password { get; set; }
     }
 }

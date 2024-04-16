@@ -4,16 +4,15 @@ using MimeKit;
 using MailKit;
 using MailKit.Net.Smtp;
 using MailKit.Security;
-using BarkAvenueApi.Service;
 
-namespace BarkAvenueApi.Service
+namespace BarkAvenueApi.Services
 {
     public class EmailService : IEmailService
     {
         private readonly EmailSettings emailSettings;
         public EmailService(IOptions<EmailSettings> options)
         {
-            this.emailSettings = options.Value;
+            emailSettings = options.Value;
         }
         public async Task SendEmailAsync(Mailrequest mailrequest)
         {

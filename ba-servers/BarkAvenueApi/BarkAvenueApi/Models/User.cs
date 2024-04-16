@@ -4,6 +4,8 @@ namespace BarkAvenueApi.Models
 {
     public class User
     {
+        internal string permission_user;
+
         [Column("user_id")]
         public int UserId { get; set; }
 

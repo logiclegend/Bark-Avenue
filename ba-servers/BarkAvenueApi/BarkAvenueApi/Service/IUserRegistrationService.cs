@@ -3,7 +3,7 @@ using BarkAvenueApi.Models;
 
 namespace BarkAvenueApi.Services
 {
-    public interface IUserRegistrationServiceMarta
+    public interface IUserRegistrationService
     {
         Task<bool> UserExists(string email);
         Task<bool> RegisterUser(RegistrationDTO registrationDTO);
