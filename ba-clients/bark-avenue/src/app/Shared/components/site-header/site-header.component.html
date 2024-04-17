@@ -3,10 +3,12 @@
 		<div class="header__logo logo">
 			<a routerLink="/home" class="logo__link"><img src="assets/images/icons/logo.svg" alt="Image"></a>
 		</div>
+
 		<div  class="header__menu menu" [class.menu-open]="active">
     			<button type="button" class="menu__icon icon-menu"  (click)="onMenuClick()"><span></span></button>
 			<nav class="menu__body" [class.menu-open]="active">
 				<ul class="menu__list ">
+
 					<li class="menu__item"><a routerLink="/forum" class="menu__link">Форум<span></span></a></li>
 					<li class="menu__item"><a routerLink="/contacts" class="menu__link">Контакти<span></span></a></li>
 					<li class="menu__item"><a routerLink="/advice" class="menu__link">Поради<span></span></a></li>
@@ -14,6 +16,7 @@
 					<li class="menu__item"><a routerLink="/map" class="menu__link">Карта<span></span></a></li>
 					<li class="menu__item"><a routerLink="/breeds" class="menu__link">Породи<span></span></a></li>
 					<li *ngIf="isMobile" class="menu__item"><a routerLink="/account" class="menu__link">Особистий кабінет</a></li>
+
 				</ul>
 			</nav>
 		</div>

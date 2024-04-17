@@ -1,0 +1,16 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/ba-servers/BarkAvenueApi/BarkAvenueApi/obj/Debug/net8.0/BarkAvenueApi.AssemblyInfo.cs
+/ba-servers/BarkAvenueApi/BarkAvenueApi/obj/Debug/net8.0/BarkAvenueApi.AssemblyInfoInputs.cache
+/ba-servers/BarkAvenueApi/BarkAvenueApi/obj/Debug/net8.0/BarkAvenueApi.assets.cache
+/ba-servers/BarkAvenueApi/BarkAvenueApi/obj/Debug/net8.0/BarkAvenueApi.GeneratedMSBuildEditorConfig.editorconfig
+/ba-servers/BarkAvenueApi/BarkAvenueApi/obj/project.nuget.cache
+/ba-servers/BarkAvenueApi/BarkAvenueApi/obj/project.assets.json
+/ba-servers/BarkAvenueApi/BarkAvenueApi/obj/Debug/net8.0/BarkAvenueApi.GeneratedMSBuildEditorConfig.editorconfig
+/ba-servers/BarkAvenueApi/BarkAvenueApi/obj/Debug/net8.0/BarkAvenueApi.assets.cache
+/ba-servers/BarkAvenueApi/BarkAvenueApi/obj/Debug/net8.0/BarkAvenueApi.AssemblyInfoInputs.cache
+/ba-servers/BarkAvenueApi/BarkAvenueApi/obj/Debug/net8.0/BarkAvenueApi.AssemblyInfo.cs
+/ba-servers/BarkAvenueApi/BarkAvenueApi/obj/BarkAvenueApi.csproj.nuget.dgspec.json
+/ba-servers/BarkAvenueApi/BarkAvenueApi/obj/Debug/net8.0/BarkAvenueApi.csproj.AssemblyReference.cache

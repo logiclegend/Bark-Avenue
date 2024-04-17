@@ -2,6 +2,7 @@
 //====================================================================================================
 
 .footer {
+
    position: sticky;
    background-color: $primary;
 
@@ -95,11 +96,13 @@
 
    // .information__link
    &__link {
+   
       color: rgba(white, 80%);
       font-size: toRem(12);
       font-weight: 500;
       line-height: 100%;
       transition: all 0.2s ease-in-out;
+
 
       &:hover {
          color: white;

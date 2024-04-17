@@ -7,6 +7,7 @@ import { SiteHeaderComponent } from './Shared/components/site-header/site-header
 import { SiteFooterComponent } from './Shared/components/site-footer/site-footer.component';
 import { AppRoutingModule } from './app-routing.module';
 import { EmptyPageComponent } from './pages/empty-page/empty-page.component';
+
 import { AccordionComponent } from './Shared/components/accordion/accordion.component';
 import { SwiperComponent } from './Shared/components/swiper/swiper.component';
 import { AccountComponent } from './pages/account-page/components/account/account.component';
@@ -14,6 +15,7 @@ import { RegistrationComponent } from './Shared/components/registration/registra
 import { ModalComponent } from './Shared/components/modal/modal.component';
 import { ModalService } from './Shared/services/modal.service';
 import { LoginComponent } from './Shared/components/login/login.component';
+
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { LoginComponent } from './Shared/components/login/login.component';
     RegistrationComponent,
     ModalComponent,
     LoginComponent
+
   ],
   imports: [
     BrowserModule,
