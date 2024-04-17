@@ -162,7 +162,7 @@
             letter-spacing: 0.5px;
             top: 0;
             left: 0;
-            padding: toRem(6) toRem(0) toRem(6) toRem(0);
+            padding: toRem(6) toRem(0) toRem(6) toRem(20);
             transform: translateX(-120px);
             transition: transform 0.2s ease-in-out;
          }
@@ -220,10 +220,9 @@
 ._icon-twitter,
 ._icon-facebook,
 ._icon-youtube {
-   color: white;
+   // color: white;
    font-size: toRem(22);
    line-height: 100%;
 }
 
 //====================================================================================================
-
