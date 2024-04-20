@@ -18,7 +18,7 @@ namespace BarkAvenueApi.Models
                     .Build();
 
                 string connectionString = configuration.GetConnectionString("DefaultConnection");
-                optionsBuilder.UseNpgsql(connectionString); // Видалили повторне використання UseNpgsql
+                optionsBuilder.UseNpgsql(connectionString); 
             }
         }
 

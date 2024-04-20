@@ -55,15 +55,10 @@ namespace BarkAvenueApi.Services
                 _dbContext.users.Add(user);
                 await _dbContext.SaveChangesAsync();
 
+                var createEmail = new CreateEmail();
+                var mailRequest = createEmail.CreateWelcomeEmail(registrationDTO.Email);
 
-                var mailRequest = new Mailrequest
-                {
-                    ToEmail = registrationDTO.Email,
-                    Subject = "Welcome to Our Website",
-                    Body = "Thank you for registering on our website!"
-                };
                 await _emailService.SendEmailAsync(mailRequest);
-
                 return true;
             }
             catch (Exception ex)
@@ -71,11 +66,6 @@ namespace BarkAvenueApi.Services
                 Console.WriteLine($"Error while registering user: {ex}");
                 return false;
             }
-        }
-
-        public Task RegisterUser(User user)
-        {
-            throw new NotImplementedException();
         }
     }
 }
