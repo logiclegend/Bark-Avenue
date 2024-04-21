@@ -1,13 +1,13 @@
 @import "global";
 
 .header {
-  // background-color: $primary;
+  background-color: $primary;
   position: fixed;
   width: 100%;
   left: 0;
   top: 0;
   z-index: 10;
-  // box-shadow: 0px 3px 10px black;
+  box-shadow: 0px 3px 10px $primary;
   // .header__container
 
   &__container {

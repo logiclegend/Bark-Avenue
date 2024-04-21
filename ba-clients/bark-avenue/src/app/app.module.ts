@@ -15,6 +15,7 @@ import { RegistrationComponent } from './Shared/components/registration/registra
 import { ModalComponent } from './Shared/components/modal/modal.component';
 import { ModalService } from './Shared/services/modal.service';
 import { LoginComponent } from './Shared/components/login/login.component';
+import { ContactsComponent } from './pages/contacts-page/components/contacts/contacts.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { LoginComponent } from './Shared/components/login/login.component';
     AccountComponent,
     RegistrationComponent,
     ModalComponent,
-    LoginComponent
+    LoginComponent,
+    ContactsComponent
 
   ],
   imports: [

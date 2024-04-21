@@ -6,9 +6,11 @@ import { EmptyPageComponent } from './pages/empty-page/empty-page.component';
 import { AccountComponent } from './pages/account-page/components/account/account.component';
 import { RegistrationComponent } from './Shared/components/registration/registration/registration.component';
 import { LoginComponent } from './Shared/components/login/login.component';
+import { ContactsComponent } from './pages/contacts-page/components/contacts/contacts.component';
 
 const routes: Routes = [
   {path: 'home' , component: HomeComponent , title: "Bark Avenue"},
+  {path: 'contacts' , component: ContactsComponent , title: "Bark Avenue"},
   {path: 'account' , component: AccountComponent , title: "Bark Avenue"},
   {path: '', redirectTo: '/home' , pathMatch: 'full' },
   {path: '**' , component: EmptyPageComponent}

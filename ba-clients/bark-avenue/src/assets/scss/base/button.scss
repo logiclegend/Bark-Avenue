@@ -33,25 +33,20 @@
 		border: 2px solid $mainOrangeColor;
 	}
 
-	&--dark {
-		max-width: toRem(230);
-		padding: toRem(10) toRem(70) toRem(10) toRem(15);
-		color: white;
-		background-color: $mainColor;
-		font-size: toRem(20);
-		font-weight: 600;
-		line-height: toRem(24);
+	&--orange {
+		max-width: toRem(170);
 		position: relative;
+		background: $mainOrangeColor;
+		padding: toRem(13) toRem(40) toRem(13) toRem(15);
+		color: white;
 
-		&::after {
-			content: "";
-			background-image: url("../../../images/icons/arrow.svg");
-			width: 36px;
-			height: 30px;
-			margin-right: 15px;
+		&._icon-angle::before {
 			position: absolute;
-			top: 30%;
+			font-size: toRem(16);
+			color: white;
 			right: 0;
+			margin-right: toRem(15);
+			transform: rotateZ(-90deg);
 		}
 	}
 
