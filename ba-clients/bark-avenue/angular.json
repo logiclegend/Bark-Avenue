@@ -36,7 +36,7 @@
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
-                "src/assets/scss/base/forms",
+                "src/assets/scss/base",
                 "src/assets/scss",
                 "src/assets/images/img"
               ]
