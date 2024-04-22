@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, ElementRef, Input, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, ViewEncapsulation, ElementRef, Input, OnInit, OnDestroy, ViewChild, Injectable } from '@angular/core'; // Додано імпорт Injectable
 
 import { ModalService } from '../../services/modal.service';
 
