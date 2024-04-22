@@ -1,20 +1,21 @@
-﻿using BarkAvenueApi.Email;
+﻿using System.Threading.Tasks;
+using BarkAvenueApi.Email;
 using Microsoft.Extensions.Options;
 using MimeKit;
 using MailKit;
 using MailKit.Net.Smtp;
 using MailKit.Security;
-using BarkAvenueApi.Service;
 
-namespace BarkAvenueApi.Service
+namespace BarkAvenueApi.Services
 {
     public class EmailService : IEmailService
     {
         private readonly EmailSettings emailSettings;
         public EmailService(IOptions<EmailSettings> options)
         {
-            this.emailSettings = options.Value;
+            emailSettings = options.Value;
         }
+
         public async Task SendEmailAsync(Mailrequest mailrequest)
         {
             var email = new MimeMessage();
@@ -31,6 +32,16 @@ namespace BarkAvenueApi.Service
             smtp.Authenticate(emailSettings.Email, emailSettings.Password);
             await smtp.SendAsync(email);
             smtp.Disconnect(true);
+        }
+
+        public Mailrequest CreateWelcomeEmail(string toEmail)
+        {
+            return new Mailrequest
+            {
+                ToEmail = toEmail,
+                Subject = "Welcome to Our Website",
+                Body = "Thank you for registering on our website!"
+            };
         }
     }
 }

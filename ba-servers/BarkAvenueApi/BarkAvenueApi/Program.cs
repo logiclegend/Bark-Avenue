@@ -1,19 +1,23 @@
 using BarkAvenueApi.Email;
-using BarkAvenueApi.Service;
+using BarkAvenueApi.Models;
+using BarkAvenueApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//Я підключаю
 builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
 builder.Services.AddTransient<IEmailService, EmailService>();
 
+builder.Services.AddDbContext<ApplicationDbContext>();
+
+
+builder.Services.AddTransient<IUserRegistrationService>(provider =>
+    new UserRegistrationService(provider.GetRequiredService<ApplicationDbContext>(),
+                                     provider.GetRequiredService<IEmailService>()));
 
 var app = builder.Build();
 
@@ -31,4 +35,3 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-
