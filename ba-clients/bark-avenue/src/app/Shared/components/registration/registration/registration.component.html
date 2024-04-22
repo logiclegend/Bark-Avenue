@@ -19,11 +19,15 @@
                     <div *ngIf="submitted && registrationForm.get('email')?.errors?.['required']" class="error-message">Поле не може бути порожнім</div>
                     <div *ngIf="submitted && registrationForm.get('email')?.errors?.['email']" class="error-message">Неправильний формат електронної адреси</div>
                 </div>
-                <div class="registration__input-container">
-                    <input class="registration__input-password" type="password" placeholder="password" formControlName="password">
-                    <div *ngIf="submitted && registrationForm.get('password')?.errors?.['required']" class="error-message">Поле не може бути порожнім</div>
+                <div class="password-container">
+                    <input class="registration__input-password" [type]="isPasswordVisible ? 'text' : 'password'" placeholder="password" formControlName="password">
+                    <img *ngIf="!isPasswordVisible; else closedEye" src="../../../../assets/images/img/closed_eye.png" alt="open-eye" class="eye-icon" (click)="togglePasswordVisibility()">
+                    <ng-template #closedEye>
+                        <img src="../../../../assets/images/img/eye.png" alt="closed-eye" class="eye-icon hide-password" (click)="togglePasswordVisibility()">
+                    </ng-template>
+                </div> 
+                <div *ngIf="submitted && registrationForm.get('password')?.errors?.['required']" class="error-message">Поле не може бути порожнім</div>
                     <div *ngIf="submitted && registrationForm.get('password')?.errors?.['minlength']" class="error-message">Пароль повинен містити принаймні 8 символів</div>
-                </div>
                 <div class="registration__forgot-password">
                     <a href="#" class="registration__forgot-password-link">Забули пароль?</a>
                 </div>

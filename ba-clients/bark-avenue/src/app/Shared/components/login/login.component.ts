@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalService } from '../../services/modal.service';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,6 +10,7 @@ import { ModalService } from '../../services/modal.service';
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   submitted = false;
+  isPasswordVisible: boolean = false; 
 
   constructor(
     private formBuilder: FormBuilder,
@@ -30,5 +30,9 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
+  }
+
+  togglePasswordVisibility(): void {
+    this.isPasswordVisible = !this.isPasswordVisible; 
   }
 }

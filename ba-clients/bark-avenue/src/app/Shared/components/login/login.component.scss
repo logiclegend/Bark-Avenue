@@ -165,3 +165,18 @@
     color: red;
     font-size: 0.75rem; 
 }
+
+.password-container {
+    position: relative;
+    width: 100%; /* Забезпечує збереження розміру поля паролю */
+}
+
+.eye-icon {
+    position: absolute;
+    top: 40%;
+    right: 10px; /* Зберігає позицію відносно правого краю */
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
