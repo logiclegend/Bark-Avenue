@@ -10,6 +10,7 @@ import { ModalService } from '../../../services/modal.service';
 export class RegistrationComponent implements OnInit {
   registrationForm!: FormGroup;
   submitted = false;
+  isPasswordVisible: boolean = false; 
 
   constructor(
     private formBuilder: FormBuilder,
@@ -30,5 +31,9 @@ export class RegistrationComponent implements OnInit {
     if (this.registrationForm.invalid) {
       return;
     }
+  }
+  
+  togglePasswordVisibility(): void {
+    this.isPasswordVisible = !this.isPasswordVisible; 
   }
 }
