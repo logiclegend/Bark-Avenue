@@ -55,8 +55,7 @@ namespace BarkAvenueApi.Services
                 _dbContext.users.Add(user);
                 await _dbContext.SaveChangesAsync();
 
-                var createEmail = new CreateEmail();
-                var mailRequest = createEmail.CreateWelcomeEmail(registrationDTO.Email);
+                var mailRequest = _emailService.CreateWelcomeEmail(registrationDTO.Email);
 
                 await _emailService.SendEmailAsync(mailRequest);
                 return true;

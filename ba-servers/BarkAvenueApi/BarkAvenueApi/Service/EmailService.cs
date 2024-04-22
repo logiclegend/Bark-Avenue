@@ -1,4 +1,5 @@
-﻿using BarkAvenueApi.Email;
+﻿using System.Threading.Tasks;
+using BarkAvenueApi.Email;
 using Microsoft.Extensions.Options;
 using MimeKit;
 using MailKit;
@@ -14,6 +15,7 @@ namespace BarkAvenueApi.Services
         {
             emailSettings = options.Value;
         }
+
         public async Task SendEmailAsync(Mailrequest mailrequest)
         {
             var email = new MimeMessage();
@@ -30,6 +32,16 @@ namespace BarkAvenueApi.Services
             smtp.Authenticate(emailSettings.Email, emailSettings.Password);
             await smtp.SendAsync(email);
             smtp.Disconnect(true);
+        }
+
+        public Mailrequest CreateWelcomeEmail(string toEmail)
+        {
+            return new Mailrequest
+            {
+                ToEmail = toEmail,
+                Subject = "Welcome to Our Website",
+                Body = "Thank you for registering on our website!"
+            };
         }
     }
 }
