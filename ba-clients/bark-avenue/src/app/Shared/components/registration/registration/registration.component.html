@@ -1,4 +1,3 @@
-
 <div class="content">
     <div class="row">
         <div class="col">
@@ -10,13 +9,25 @@
                 <li class="social__item"><a href="#" class="social__link _icon-twitter"></a></li>
                 <li class="social__item"><a href="#" class="social__link _icon-youtube"></a></li>
             </ul>
-            <form action="registration">
-                <fieldset class="registration__inputs">
-                    <input class="registration__input-name" type="text" placeholder="name">
-                    <input class="registration__input-email" type="email" placeholder="@email">
-                    <input class="registration__input-password" type="password" placeholder="password">
-                    <button class="registration__button button" type="submit">Зареєструватися</button>
-                </fieldset>
+            <form *ngIf="registrationForm" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+                <div class="registration__input-container">
+                    <input class="registration__input-name" type="text" placeholder="name" formControlName="name">
+                    <div *ngIf="submitted && registrationForm.get('name')?.errors?.['required']" class="error-message">Поле не може бути порожнім</div>
+                </div>
+                <div class="registration__input-container">
+                    <input class="registration__input-email" type="email" placeholder="@email" formControlName="email">
+                    <div *ngIf="submitted && registrationForm.get('email')?.errors?.['required']" class="error-message">Поле не може бути порожнім</div>
+                    <div *ngIf="submitted && registrationForm.get('email')?.errors?.['email']" class="error-message">Неправильний формат електронної адреси</div>
+                </div>
+                <div class="registration__input-container">
+                    <input class="registration__input-password" type="password" placeholder="password" formControlName="password">
+                    <div *ngIf="submitted && registrationForm.get('password')?.errors?.['required']" class="error-message">Поле не може бути порожнім</div>
+                    <div *ngIf="submitted && registrationForm.get('password')?.errors?.['minlength']" class="error-message">Пароль повинен містити принаймні 8 символів</div>
+                </div>
+                <div class="registration__forgot-password">
+                    <a href="#" class="registration__forgot-password-link">Забули пароль?</a>
+                </div>
+                <button class="registration__button button" type="submit">Зареєструватися</button>
             </form>
         </div>
         <div class="col">
@@ -27,4 +38,3 @@
         </div>
     </div>
 </div>
-

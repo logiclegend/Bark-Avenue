@@ -167,3 +167,16 @@
 
     
 }
+.registration__inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem; 
+}
+
+.error-message {
+    color: red;
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+    word-break: break-all; 
+}
+

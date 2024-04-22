@@ -15,6 +15,8 @@ import { RegistrationComponent } from './Shared/components/registration/registra
 import { ModalComponent } from './Shared/components/modal/modal.component';
 import { ModalService } from './Shared/services/modal.service';
 import { LoginComponent } from './Shared/components/login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import { LoginComponent } from './Shared/components/login/login.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
 
