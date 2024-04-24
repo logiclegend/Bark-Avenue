@@ -16,10 +16,11 @@
                 <li class="social__item"><a href="#" class="social__link _icon-twitter"></a></li>
                 <li class="social__item"><a href="#" class="social__link _icon-youtube"></a></li>
             </ul>
-            <form action="registration">
+            <form action="registration" >
                 <fieldset class="registration__inputs">
-                    <input class="registration__input-email" type="email" placeholder="@email">
-                    <input class="registration__input-password" type="password" placeholder="password">
+                    <input class="registration__input-email" name="email" [(ngModel)]="credentials.email" type="text" placeholder="@email" />
+                    {{credentials.email}}
+                    <input class="registration__input-password" name="password" [(ngModel)]="credentials.password" type="password" placeholder="password">
                     <a class="registration__reset-psw" href="#">Забули пароль?</a>
                     <button class="registration__button button" type="submit">Увійти</button>
                 </fieldset>

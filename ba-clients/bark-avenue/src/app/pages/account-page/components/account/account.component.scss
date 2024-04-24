@@ -1,0 +1,313 @@
+@import "global";
+
+.user-profile {
+    // .user-profile__container
+    background-color: rgba($primary, 0.05);
+
+    &__container {
+        padding: toRem(80) toRem(20) toRem(30) toRem(20);
+        display: flex;
+        column-gap: toRem(30);
+    }
+
+    // .user-profile__sidebar
+
+    &__sidebar {
+        height: 100%;
+        width: toRem(350);
+    }
+
+    // .user-profile__blog
+
+    &__profile {
+        width: calc(100% - 380px);
+        height: 100%;
+    }
+
+    // .user-profile__lost-dog
+}
+.sidebar {
+    // .sidebar__user-info
+
+    &__user-info {
+        height: toRem(444);
+        width: 100%;
+        box-shadow: 4px 2px 15px rgba($primary, 0.25);
+        border-radius: toRem(5);
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        background: white url("../../../../../assets/images/img/user_backimage.jpg") 0% 0% no-repeat;
+        padding: toRem(100) toRem(0) toRem(20) toRem(0);
+    }
+
+    // .sidebar__user-img
+    &__img-wrapper {
+        position: relative;
+    }
+
+    &__user-img {
+        position: relative;
+        width: toRem(200);
+        height: toRem(200);
+        border-radius: 50%;
+        border: 5px solid white;
+        overflow: hidden;
+        box-shadow: 4px 7px 15px rgba($primary, 0.25);
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__input {
+        position: absolute;
+    }
+
+    // .sidebar__user-name
+
+    &__user-name {
+        color: $primary;
+        font-size: toRem(24);
+        line-height: 100%;
+        font-weight: 600;
+        padding: toRem(20) toRem(0) toRem(10) toRem(0);
+    }
+
+    &__user-tag {
+        color: rgba($primary, 0.75);
+        font-size: toRem(16);
+        font-weight: 500;
+        line-height: 100%;
+        padding-bottom: toRem(30);
+    }
+
+    // .sidebar__social-media
+
+    &__social-media {
+        display: flex;
+        column-gap: toRem(25);
+    }
+
+    // .sidebar__user-nav
+
+    &__user-nav {
+        margin-top: toRem(30);
+    }
+}
+
+.input {
+    // .input__file
+    width: toRem(50);
+    height: toRem(50);
+    display: flex;
+    bottom: 0;
+    right: 0;
+
+    &__file {
+        opacity: 0;
+        visibility: hidden;
+        width: 0;
+    }
+
+    // .input__button
+
+    &__button {
+        width: 100%;
+        height: 100%;
+        background-color: $mainOrangeColor;
+        border: 4px solid white;
+        border-radius: 50%;
+        position: relative;
+        box-shadow: 4px 4px 15px rgba($primary, 0.25);
+        cursor: pointer;
+        transition: all 0.2s linear;
+
+        &::after {
+            content: "";
+            position: absolute;
+            width: toRem(26);
+            height: toRem(26);
+            top: calc(50% - 13px);
+            left: calc(50% - 13px);
+            background: url("../../../../../assets/images/icons/plus.svg");
+        }
+
+        &:hover {
+            transform: scale(1.02);
+        }
+    }
+}
+
+._icon-instagram::before {
+    color: $mainOrangeColor;
+}
+._icon-facebook::before {
+    color: #3b5998;
+}
+._icon-twitter::before {
+    color: #00acee;
+}
+
+.navbar {
+    // .navbar__list
+    width: 100%;
+    height: auto;
+    background-color: white;
+    border-radius: toRem(5);
+    position: relative;
+    box-shadow: 4px 2px 15px rgba($primary, 0.25);
+
+    &__list {
+        width: 100%;
+        height: 100%;
+        // align-content: center;
+
+        :not(:last-child)::after {
+            content: "";
+            width: 100%;
+            height: 1px;
+            background: #d9d9d9;
+            position: absolute;
+            left: 0;
+        }
+    }
+
+    // .navbar__item
+
+    &__item {
+        width: 100%;
+        align-content: end;
+        height: toRem(60);
+
+        // padding: toRem(0) toRem(30) toRem(0) toRem(30);
+    }
+
+    // .navbar__button
+
+    &__button {
+        display: flex;
+        align-items: center;
+        text-align: start;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        padding: toRem(5) toRem(30);
+
+        &:hover {
+            span {
+                // color: $mainOrangeColor;
+                transform: scale(1.02);
+                // font-weight: 600;
+            }
+        }
+
+        &.active {
+            span {
+                font-weight: 600;
+                color: $mainOrangeColor;
+            }
+        }
+
+        span {
+            transition: all 0.2s ease-in-out;
+            color: rgba($primary, 0.75);
+            font-size: toRem(16);
+            font-weight: 500;
+            line-height: 100%;
+            margin-left: toRem(25);
+            position: relative;
+            width: 100%;
+        }
+        img {
+        }
+    }
+}
+
+._icon-angle::before {
+    position: absolute;
+    transform: rotateZ(-90deg);
+    right: 0;
+    font-size: toRem(18);
+}
+
+.tab-content {
+    display: none;
+}
+
+#content-1 {
+    display: block;
+}
+
+.profile {
+    // .profile__container
+
+    &__container {
+        padding: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    // .profile__header
+
+    &__header {
+        color: $primary;
+        font-size: toRem(24);
+        font-weight: 600;
+        line-height: 100%;
+        padding-bottom: toRem(10);
+    }
+
+    // .profile__description
+
+    &__description {
+        color: rgba($primary, 0.75);
+        font-size: toRem(16);
+        line-height: 100%;
+        font-weight: 500;
+        margin-bottom: toRem(20);
+    }
+
+    // .profile__blog-part
+
+    &__blog-part {
+        width: 100%;
+        height: 320px;
+        background: white;
+        border-radius: toRem(5);
+        box-shadow: 4px 2px 15px rgba($primary, 0.25);
+    }
+
+    // .profile__article-part
+
+    &__article-part {
+    }
+}
+
+.blog-part {
+    &__container {
+        padding: toRem(20);
+    }
+
+    &__header {
+        position: relative;
+        color: $primary;
+        font-size: toRem(20);
+        font-weight: 600;
+        line-height: 100%;
+        padding-bottom: toRem(15);
+
+        &::after {
+            position: absolute;
+            content: "";
+            width: 100%;
+            height: toRem(2);
+            background: #d9d9d9;
+            bottom: 0;
+            left: 0;
+        }
+    }
+}

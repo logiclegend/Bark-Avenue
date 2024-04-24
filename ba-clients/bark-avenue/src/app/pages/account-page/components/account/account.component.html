@@ -1,1 +1,79 @@
-<app-registration></app-registration>>
+<div class="user-profile">
+    <div class="user-profile__container">
+        <aside class="user-profile__sidebar sidebar">
+            <div class="sidebar__user-info">
+                <div class="sidebar__img-wrapper">
+                    <div class="sidebar__user-img">
+                        <img src="./../../../../../assets/images/img/user_avatar.jpg" alt="Image">
+                    </div>
+                    <div class="sidebar__input input">
+                        <input class="input__file" id="input__file" type="file">
+                        <label class="input__button" for="input__file"></label>
+                    </div>
+                </div>
+                <div class="sidebar__user-name">Elizabet Keen</div>
+                <span class="sidebar__user-tag">@elizabethkeen</span>
+                <div class="sidebar__social-media">
+                    <i class="_icon-instagram"></i>
+                    <i class="_icon-facebook"></i>
+                    <i class="_icon-twitter"></i>
+                </div>
+            </div>
+            <div class="sidebar__user-nav navbar">
+                <ul class="navbar__list">
+                    <li class="navbar__item">
+                        <button type="button" class="navbar__button tablinks" (click)="tabOpen($event, 'blog')" id="defoultOpen">
+                            <img src="../../../../../assets/images/icons/user_gray.svg" alt="Settings">
+                            <span class="_icon-angle">Профіль</span>
+                        </button>
+                    </li>
+                    <li class="navbar__item">
+                        <button type="button" class="navbar__button tablinks" (click)="tabOpen($event, 'settings')">
+                            <img src="../../../../../assets/images/icons/settings.svg" alt="Settings">
+                            <span class="_icon-angle">Налаштування</span>
+                        </button>
+                    </li>
+                    <li class="navbar__item">
+                        <button type="button" class="navbar__button tablinks" (click)="tabOpen($event, 'activity')">
+                            <img src="../../../../../assets/images/icons/graphics.svg" alt="Activity">
+                            <span class="_icon-angle">Активність</span>
+                        </button>
+                    </li>
+                    <li class="navbar__item">
+                        <button type="button" class="navbar__button tablinks" (click)="tabOpen($event, 'logout')">
+                            <img src="../../../../../assets/images/icons/exit.svg" alt="Exit">
+                            <span class="_icon-angle">Вихід</span>
+                        </button>
+                    </li> 
+                </ul>
+            </div>
+        </aside>
+        <section class="user-profile__profile profile tab-content" id="blog">
+            <div class="profile__container">
+                <h1 class="profile__header">Профіль користувача</h1>
+                <div class="profile__description">Налаштуйте свій профіль згідно ваших побажань</div>
+                <div class="profile__blog-part blog-part">
+                    <div class="blog-part__container">
+                        <h2 class="blog-part__header">Ваші публікації</h2>
+                    </div>
+                </div>
+                <div class="profile__article-part"></div>
+            </div>
+        </section>
+        <section class="user-profile__profile profile tab-content" id="settings">
+            <div class="profile__container">
+                <p>Content 2</p>
+            </div>
+        </section>
+        <section class="user-profile__profile profile tab-content" id="activity">
+            <div class="profile__container">
+                <p>Content 3</p>
+            </div>
+        </section>
+        <section class="user-profile__profile profile tab-content" id="logout">
+            <div class="profile__container">
+                <p>Content 4</p>
+            </div>
+        </section>
+    </div>
+</div>
