@@ -1,0 +1,17 @@
+
+<div class="conteiner">
+    <div class="header"  (click)="onAccordionClick()">
+        <div class="row">
+            <div  [ngClass]="headerClass">{{headerTitle}}</div>
+            <div class="col">
+                <i *ngIf="isOpen" class="angle _icon-angle"></i>
+                <i *ngIf="!isOpen" class="angle angle--up _icon-angle"></i>
+            </div>
+        </div>
+    </div>
+    <div class="body" *ngIf="isOpen">
+        <ng-container>
+            <ng-content></ng-content>
+        </ng-container>
+    </div>
+</div>

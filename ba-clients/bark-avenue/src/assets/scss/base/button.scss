@@ -1,0 +1,62 @@
+//<BUTTONS (a.btn+tab)>
+// Сніппет (HTML): btn
+
+.button {
+	display: inline-block;
+	padding: toRem(20);
+	color: white;
+	font-weight: 700;
+	font-size: toRem(16);
+	line-height: 1.25;
+
+	width: toRem(200);
+	background: linear-gradient(to right, #d41818, $mainOrangeColor, #fff700);
+	border-radius: toRem(30);
+
+	text-align: center;
+
+	box-shadow: 2px 4px 4px rgba(black, 0.25);
+
+	@media (any-hover: hover) {
+		&:hover {
+		}
+	}
+
+	&--fw {
+		width: 100%;
+	}
+
+	&--transparent {
+		background: transparent;
+		box-shadow: none;
+		filter: drop-shadow(2px 4px 4px rgba(black, 0.25));
+		border: 2px solid $mainOrangeColor;
+	}
+
+	&--orange {
+		max-width: toRem(170);
+		position: relative;
+		background: $mainOrangeColor;
+		padding: toRem(13) toRem(40) toRem(13) toRem(15);
+		color: white;
+
+		&._icon-angle::before {
+			position: absolute;
+			font-size: toRem(16);
+			color: white;
+			right: 0;
+			margin-right: toRem(15);
+			transform: rotateZ(-90deg);
+		}
+	}
+
+	// @media (max-width: toEm(479.98)) {
+	// 	width: 100%;
+	// }
+}
+
+.grad-text {
+	background-image: $gradient;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}

@@ -1,0 +1,6 @@
+<div class="modal modal-back" #modal>
+    <div class="modal__body">
+        <button class="modal__btn" (click)="close()" [ngStyle]="{ 'color': color }">x</button>
+        <ng-content></ng-content>
+    </div>
+</div>
