@@ -19,6 +19,11 @@ builder.Services.AddTransient<IUserRegistrationService>(provider =>
     new UserRegistrationService(provider.GetRequiredService<ApplicationDbContext>(),
                                      provider.GetRequiredService<IEmailService>()));
 
+builder.Services.AddTransient<IUserAuthenticationService, UserAuthenticationService>();
+builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));
+builder.Services.AddTransient<JwtSettings>();
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
