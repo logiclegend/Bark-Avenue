@@ -90,7 +90,10 @@
 		}
 		// Якщо не підтримується clamp();
 		@supports not (#{$property}: $propertyValue) {
-			#{$property}: calc(#{toRem($minSize)} + #{$addSize} * (100vw - #{toRem($widthTo)}) / #{math.div($widthFrom, 16) - math.div($widthTo, 16)});
+			#{$property}: calc(
+				#{toRem($minSize)} + #{$addSize} * (100vw - #{toRem($widthTo)}) / #{math.div($widthFrom, 16) -
+					math.div($widthTo, 16)}
+			);
 		}
 	}
 	@if $keepSize != 1 and $keepSize != 2 {

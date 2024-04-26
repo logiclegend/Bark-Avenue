@@ -37,6 +37,7 @@ export class ModalService {
     close() {
         // close the modal that is currently open
         const modal = this.modals.find(x => x.isOpen);
+        // this.modals.pop();
         modal?.close();
     }
 

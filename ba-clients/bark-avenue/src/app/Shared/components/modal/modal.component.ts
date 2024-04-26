@@ -22,11 +22,6 @@ export class ModalComponent implements OnInit, OnDestroy {
     color2 = 'black';
     color?: string;
     
-    
-
-
-
-
     ngOnInit() {
         // add self (this modal instance) to the modal service so it can be opened from any component
         this.modalService.add(this);
@@ -47,7 +42,6 @@ export class ModalComponent implements OnInit, OnDestroy {
     ngOnDestroy() {
         // remove self from modal service
         this.modalService.remove(this);
-
         // remove modal element from html
         this.element.remove();
     }
@@ -63,6 +57,5 @@ export class ModalComponent implements OnInit, OnDestroy {
         // this.element.style.display = 'none';
         this.modal?.nativeElement.classList.remove('modal-open');
         this.isOpen = false;
-        
     }
 }
