@@ -40,7 +40,7 @@
                         </button>
                     </li>
                     <li class="navbar__item">
-                        <button type="button" class="navbar__button tablinks" (click)="tabOpen($event, 'logout')">
+                        <button type="button" class="navbar__button" (click)="signOut()">
                             <img src="../../../../../assets/images/icons/exit.svg" alt="Exit">
                             <span class="_icon-angle">Вихід</span>
                         </button>
@@ -68,11 +68,6 @@
         <section class="user-profile__profile profile tab-content" id="activity">
             <div class="profile__container">
                 <p>Content 3</p>
-            </div>
-        </section>
-        <section class="user-profile__profile profile tab-content" id="logout">
-            <div class="profile__container">
-                <p>Content 4</p>
             </div>
         </section>
     </div>

@@ -1,6 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home-page/components/home/home.component';
@@ -20,6 +21,8 @@ import { ContactsComponent } from './pages/contacts-page/components/contacts/con
 
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,13 +36,16 @@ import { ContactsComponent } from './pages/contacts-page/components/contacts/con
     RegistrationComponent,
     ModalComponent,
     LoginComponent,
-    ContactsComponent
+    ContactsComponent,
+    
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
+
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
 

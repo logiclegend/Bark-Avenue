@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ModalService } from 'src/app/Shared/services/modal.service';
 import { IUserCredentials } from '../user.model';
-// import { UserService } from '../user.service';
+import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,15 +11,20 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   credentials: IUserCredentials = {email: '', password: ''};
-  
-  constructor(protected modalService: ModalService){}
+  signInError: boolean = false;
 
-  // constructor(protected modalService: ModalService , private userService: UserService, private router: Router) {}
+  constructor(protected modalService: ModalService , private userService: UserService, private router: Router) {}
 
-  // signIn(){
-  //   this.userService.signIn(this.credentials).subscribe({
-  //     next: () => this.router.navigate(['/home'])
-  //   });
-  // } 
+  signIn(){
+    this.signInError = false;
+    this.userService.signIn(this.credentials).subscribe({
+      next: () => this.router.navigate(['/contacts']),
+      error: () => (this.signInError = true)
+    });
+  } 
+
+  signOut(){
+    this.userService.signOut();
+  }
 
 }

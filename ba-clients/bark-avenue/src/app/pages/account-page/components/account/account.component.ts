@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/user/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-account',
@@ -6,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./account.component.scss']
 })
 export class AccountComponent implements OnInit {
+
+
+  constructor(private userService: UserService, private router: Router){}
 
   defoultOpen(){
     document.getElementById("defoultOpen")?.click();
@@ -31,5 +36,9 @@ export class AccountComponent implements OnInit {
 
   }
 
+  signOut(){
+    this.userService.signOut();
+    this.router.navigate(['/home']);
+  }
 
 }

@@ -20,8 +20,13 @@
 				</ul>
 			</nav>
 		</div>
-		<div *ngIf="!isMobile" class="header__user-block user-block">
+		<div *ngIf="!isMobile && !user" class="header__user-block user-block">
 			<button type="button" (click)="modalService.open('modal-1')"  class="user-block__user-icon _icon-user"></button>
+		</div>
+		<div *ngIf="user" class="header__user-block user-block">
+			<a *ngIf="user" routerLink="/account" class="user-block__user-img">
+				<img src="../../../../assets/images/img/user_avatar.jpg" alt="Image">
+			</a>
 		</div>
 	</div>
 </header>
