@@ -30,17 +30,17 @@ namespace BarkAvenueApi.Tests
             var userRegistrationService = new UserRegistrationService(_context, emailService);
             var registrationDTO = new RegistrationDTO
             {
-                Username = "testuser",
+                Username = "user",
                 Email = "test@example.com",
-                Phone_number = "1234567890",
-                Password_user = "testpassword",
-                Confirm_password = "testpassword"
+                Phone_number = "123456789",
+                Password_user = "password",
+                Confirm_password = "password"
             };
 
             var result = await userRegistrationService.RegisterUser(registrationDTO);
 
-            Assert.True(result);
-            Assert.Equal(1, await _context.users.CountAsync());
+            result.Should().BeTrue();
+            _context.users.Should().HaveCount(1);
         }
 
         [Fact]
@@ -50,9 +50,9 @@ namespace BarkAvenueApi.Tests
             var userRegistrationService = new UserRegistrationService(_context, emailService);
             var registrationDTO = new RegistrationDTO
             {
-                Username = "existinguser",
+                Username = "user",
                 Email = "existing@example.com",
-                Phone_number = "1234567890",
+                Phone_number = "123456789",
                 Password_user = "existingpassword",
                 Confirm_password = "existingpassword"
             };
@@ -60,22 +60,18 @@ namespace BarkAvenueApi.Tests
 
             var result = await userRegistrationService.UserExists("existing@example.com");
 
-            Assert.True(result);
+            result.Should().BeTrue();
         }
 
         [Fact]
         public async Task RegisterUser_CorrectUserProperties()
         {
-            var options = new DbContextOptionsBuilder<ApplicationDbContext>()
-                .UseInMemoryDatabase(databaseName: "TestDatabase")
-                .Options;
-
-            using (var context = new ApplicationDbContext(options))
+            using (var context = new ApplicationDbContext(_options))
             {
                 var emailServiceMock = new Mock<IEmailService>();
                 var registrationDTO = new RegistrationDTO
                 {
-                    Username = "testuser",
+                    Username = "user",
                     Email = "test@example.com",
                     Phone_number = "123456789",
                     Password_user = "password"
@@ -85,23 +81,23 @@ namespace BarkAvenueApi.Tests
 
                 await userRegistrationService.RegisterUser(registrationDTO);
                 var savedUser = await context.users.FirstOrDefaultAsync(u => u.Email == registrationDTO.Email);
-
-                Assert.NotNull(savedUser);
-                Assert.Equal(registrationDTO.Username, savedUser.Username);
-                Assert.Equal(registrationDTO.Email, savedUser.Email);
-                Assert.Equal(registrationDTO.Phone_number, savedUser.PhoneNumber);
-                Assert.Equal(registrationDTO.Password_user, savedUser.PasswordUser);
-                Assert.Equal("User", savedUser.RoleUser);
-                Assert.Equal("Normal", savedUser.PermissionUser);
-                Assert.False(savedUser.IsActive);
-                Assert.Equal(DateTimeOffset.UtcNow.Date, savedUser.DateRegistration.Date);
-                Assert.Equal(DateTimeOffset.UtcNow.Date, savedUser.LastLogin.Date);
+                
+                savedUser.Should().NotBeNull();
+                savedUser.Username.Should().Be(registrationDTO.Username);
+                savedUser.Email.Should().Be(registrationDTO.Email);
+                savedUser.PhoneNumber.Should().Be(registrationDTO.Phone_number);
+                savedUser.PasswordUser.Should().Be(registrationDTO.Password_user);
+                savedUser.RoleUser.Should().Be("User");
+                savedUser.PermissionUser.Should().Be("Normal");
+                savedUser.IsActive.Should().BeFalse();
+                savedUser.DateRegistration.Date.Should().BeCloseTo(DateTimeOffset.UtcNow.Date, TimeSpan.FromSeconds(1));
+                savedUser.LastLogin.Date.Should().BeCloseTo(DateTimeOffset.UtcNow.Date, TimeSpan.FromSeconds(1));
             }
         }
 
         public void Dispose()
         {
-            _context.Dispose(); 
+            _context.Dispose();
         }
     }
     public class MockEmailService : IEmailService
