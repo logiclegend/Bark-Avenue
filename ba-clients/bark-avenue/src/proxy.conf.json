@@ -1,7 +1,6 @@
-{
-    "/api":{
-        "target": "http://localhost:7014",
-        "secure": false
-
+    {
+        "/api":{
+            "target": "https://localhost:7014",
+            "secure": false
+        }
     }
-}

@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, map, Observable } from "rxjs";
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { BehaviorSubject, catchError, map, Observable, throwError } from "rxjs";
 
-import { IUser, IUserCredentials } from "./user.model";
+import { IUser, IUserCredentials, IUserSignUpCredentials } from "./user.model";
 
 @Injectable({
     providedIn: 'root',
@@ -10,6 +10,20 @@ import { IUser, IUserCredentials } from "./user.model";
 
 export class UserService {
     private user: BehaviorSubject<IUser | null>;
+
+    // private handleError(error: HttpErrorResponse) {
+    //     if (error.status === 0) {
+    //       // A client-side or network error occurred. Handle it accordingly.
+    //       console.error('An error occurred:', error.error);
+    //     } else {
+    //       // The backend returned an unsuccessful response code.
+    //       // The response body may contain clues as to what went wrong.
+    //       console.error(
+    //         `Backend returned code ${error.status}, body was: `, error.error);
+    //     }
+    //     // Return an observable with a user-facing error message.
+    //     return throwError(() => new Error('Something bad happened; please try again later.'));
+    //   }
     
     constructor(private http: HttpClient) {
         this.user = new BehaviorSubject<IUser | null>(null);
@@ -28,8 +42,18 @@ export class UserService {
             }))
     }
 
+    signUp(credentials: IUserSignUpCredentials):Observable<IUserSignUpCredentials> {
+        return this.http
+            .post<IUserSignUpCredentials>('/api/Registration', credentials)
+            // .pipe(
+            //     catchError(this.handleError)
+            // )
+    }
+
     signOut(){
         this.user.next(null);
     }
+
+    
 
 }
