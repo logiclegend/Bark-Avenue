@@ -10,7 +10,7 @@ import { IUser, IUserCredentials, IUserSignUpCredentials } from "./user.model";
 
 export class UserService {
     private user: BehaviorSubject<IUser | null>;
-    
+
     constructor(private http: HttpClient) {
         this.user = new BehaviorSubject<IUser | null>(null);
     }
@@ -28,7 +28,6 @@ export class UserService {
             }))
     }
 
-
     signUp(credentials: IUserSignUpCredentials): Observable<string> {
         return this.http.post('/api/Registration', credentials, { responseType: "text" });
       }
@@ -36,7 +35,5 @@ export class UserService {
     signOut(){
         this.user.next(null);
     }
-
-    
 
 }
