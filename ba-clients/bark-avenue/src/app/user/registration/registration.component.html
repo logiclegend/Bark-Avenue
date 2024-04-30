@@ -12,10 +12,10 @@
             </ul>
             <form action="registration" (ngSubmit)="signUp()">
                 <fieldset class="registration__inputs">
-                    <input name ="name" [(ngModel)]="credentials.name" class="registration__input-name" type="text" placeholder="name">
+                    <input name ="name" [(ngModel)]="credentials.username" class="registration__input-name" type="text" placeholder="name">
                     <input name ="email" [(ngModel)]="credentials.email" class="registration__input-email" type="text" placeholder="@email">
                     <!-- <input name ="number" [(ngModel)]="credentials.number" class="registration__input-email" type="text" placeholder="number"> -->
-                    <input name ="pasword" [(ngModel)]="credentials.password" class="registration__input-password" type="password" placeholder="password">
+                    <input name ="pasword" [(ngModel)]="credentials.password_user" class="registration__input-password" type="password" placeholder="password">
                     <input name ="confirmPassword" [(ngModel)]="credentials.confirm_password" class="registration__input-password" type="password" placeholder="confirm password">
                     <button class="registration__button button" type="submit">Зареєструватися</button>
                 </fieldset>

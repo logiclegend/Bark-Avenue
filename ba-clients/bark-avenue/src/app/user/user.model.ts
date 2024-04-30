@@ -11,10 +11,10 @@ export interface IUserCredentials {
 }
 
 export interface IUserSignUpCredentials {
-    name: string; 
+    username: string; 
     email: string;
-    number: string;
-    password: string;
+    phone_number: string;
+    password_user: string;
     confirm_password: string;
 }
 
