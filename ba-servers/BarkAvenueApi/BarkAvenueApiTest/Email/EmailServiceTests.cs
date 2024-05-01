@@ -21,10 +21,6 @@ namespace BarkAvenueApi.Tests.Services
                 Port = 587
             };
 
-            var optionsMock = new Mock<IOptions<EmailSettings>>();
-            optionsMock.Setup(opt => opt.Value).Returns(emailSettings);
-
-            var emailService = new EmailService(optionsMock.Object);
             var mailRequest = new Mailrequest
             {
                 ToEmail = "user@example.com",
@@ -32,7 +28,14 @@ namespace BarkAvenueApi.Tests.Services
                 Body = "Test Body"
             };
 
+            var emailServiceMock = new Mock<IEmailService>();
+
+            emailServiceMock.Setup(service => service.SendEmailAsync(It.IsAny<Mailrequest>())).Verifiable();
+
+            var emailService = emailServiceMock.Object;
             await emailService.SendEmailAsync(mailRequest);
+
+            emailServiceMock.Verify(service => service.SendEmailAsync(mailRequest), Times.Once);
         }
 
         [Fact]
@@ -85,7 +88,5 @@ namespace BarkAvenueApi.Tests.Services
 
             await Assert.ThrowsAsync<ArgumentNullException>(() => emailService.SendEmailAsync(mailRequest));
         }
-
-
     }
 }

@@ -1,12 +1,8 @@
-﻿using System;
-using System.Threading.Tasks;
-using BarkAvenueApi.Email;
-using BarkAvenueApi.Models;
+﻿using BarkAvenueApi.Models;
 using BarkAvenueApi.Services;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
 using Moq;
-using Xunit;
 
 namespace BarkAvenueApi.Tests
 {
@@ -26,8 +22,8 @@ namespace BarkAvenueApi.Tests
         [Fact]
         public async Task RegisterUser_ValidData_ReturnsTrue()
         {
-            var emailService = new MockEmailService();
-            var userRegistrationService = new UserRegistrationService(_context, emailService);
+            var emailServiceMock = new Mock<IEmailService>();
+            var userRegistrationService = new UserRegistrationService(_context, emailServiceMock.Object);
             var registrationDTO = new RegistrationDTO
             {
                 Username = "user",
@@ -36,7 +32,6 @@ namespace BarkAvenueApi.Tests
                 Password_user = "password",
                 Confirm_password = "password"
             };
-
             var result = await userRegistrationService.RegisterUser(registrationDTO);
 
             result.Should().BeTrue();
@@ -46,8 +41,9 @@ namespace BarkAvenueApi.Tests
         [Fact]
         public async Task UserExists_UserAlreadyRegistered_ReturnsTrue()
         {
-            var emailService = new MockEmailService();
-            var userRegistrationService = new UserRegistrationService(_context, emailService);
+            var emailServiceMock = new Mock<IEmailService>();
+            var userRegistrationService = new UserRegistrationService(_context, emailServiceMock.Object);
+
             var registrationDTO = new RegistrationDTO
             {
                 Username = "user",
@@ -81,7 +77,7 @@ namespace BarkAvenueApi.Tests
 
                 await userRegistrationService.RegisterUser(registrationDTO);
                 var savedUser = await context.users.FirstOrDefaultAsync(u => u.Email == registrationDTO.Email);
-                
+
                 savedUser.Should().NotBeNull();
                 savedUser.Username.Should().Be(registrationDTO.Username);
                 savedUser.Email.Should().Be(registrationDTO.Email);
@@ -94,27 +90,9 @@ namespace BarkAvenueApi.Tests
                 savedUser.LastLogin.Date.Should().BeCloseTo(DateTimeOffset.UtcNow.Date, TimeSpan.FromSeconds(1));
             }
         }
-
         public void Dispose()
         {
             _context.Dispose();
-        }
-    }
-    public class MockEmailService : IEmailService
-    {
-        public Mailrequest CreateWelcomeEmail(string email)
-        {
-            return new Mailrequest
-            {
-                ToEmail = email,
-                Subject = "Welcome to Our Website",
-                Body = "Thank you for registering on our website!"
-            };
-        }
-
-        public Task SendEmailAsync(Mailrequest mailrequest)
-        {
-            return Task.CompletedTask;
         }
     }
 }
