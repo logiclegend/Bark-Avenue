@@ -5,14 +5,12 @@ using System.Text;
 using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
 
-
 namespace BarkAvenueApi.Services
 {
     public interface IUserAuthenticationService
     {
         Task<(bool, string, string)> AuthenticateAsync(string username, string password);
     }
-
     public class UserAuthenticationService : IUserAuthenticationService
     {
         private readonly ApplicationDbContext _context;
@@ -23,7 +21,6 @@ namespace BarkAvenueApi.Services
             _context = context;
             _jwtSettings = jwtSettings;
         }
-
         public async Task<(bool, string, string)> AuthenticateAsync(string username, string password)
         {
             var user = await _context.users.FirstOrDefaultAsync(u => u.Username == username && u.PasswordUser == password);
@@ -36,9 +33,12 @@ namespace BarkAvenueApi.Services
 
             return (true, token.ToString(), null);
         }
-
         private JwtSecurityToken GenerateJwtToken(User user)
         {
+            if (user == null)
+            {
+                throw new ArgumentNullException(nameof(user), "User cannot be null");
+            }
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_jwtSettings.Secret);
 
@@ -56,6 +56,5 @@ namespace BarkAvenueApi.Services
 
             return tokenHandler.CreateToken(tokenDescriptor) as JwtSecurityToken;
         }
-
     }
 }

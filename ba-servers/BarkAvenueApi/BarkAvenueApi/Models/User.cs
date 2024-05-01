@@ -23,10 +23,12 @@ namespace BarkAvenueApi.Models
         public string RoleUser { get; set; }
 
         [Column("date_registration")]
-        public DateTimeOffset DateRegistration { get; set; }
+        //public DateTimeOffset DateRegistration { get; set; }
+        public DateTime DateRegistration { get; set; }
 
         [Column("last_login")]
-        public DateTimeOffset LastLogin { get; set; }
+        //public DateTimeOffset LastLogin { get; set; }
+        public DateTime LastLogin { get; set; }
 
         [Column("is_active")]
         public bool IsActive { get; set; }
