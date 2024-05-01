@@ -6,6 +6,8 @@ namespace BarkAvenueApi.Models
 {
     public class ApplicationDbContext : DbContext
     {
+        public DbSet<LostPet> LostPets { get; set; }
+
         public DbSet<User> users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
