@@ -80,7 +80,8 @@
               "browserTarget": "bark-avenue:build:production"
             },
             "development": {
-              "browserTarget": "bark-avenue:build:development"
+              "browserTarget": "bark-avenue:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
