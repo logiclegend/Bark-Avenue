@@ -11,6 +11,7 @@ namespace BarkAvenueApi.Services
     {
         Task<(bool, string, string)> AuthenticateAsync(string username, string password);
     }
+
     public class UserAuthenticationService : IUserAuthenticationService
     {
         private readonly ApplicationDbContext _context;
@@ -21,6 +22,7 @@ namespace BarkAvenueApi.Services
             _context = context;
             _jwtSettings = jwtSettings;
         }
+
         public async Task<(bool, string, string)> AuthenticateAsync(string username, string password)
         {
             var user = await _context.users.FirstOrDefaultAsync(u => u.Username == username && u.PasswordUser == password);
@@ -29,16 +31,22 @@ namespace BarkAvenueApi.Services
             {
                 return (false, null, "Invalid username or password.");
             }
+
+            if (!IsUserAuthorized(user))
+            {
+                return (false, null, "User is not authorized.");
+            }
+
             var token = GenerateJwtToken(user);
 
             return (true, token.ToString(), null);
         }
+        private bool IsUserAuthorized(User user)
+        {
+            return user.RoleUser == "user"; 
+        }
         private JwtSecurityToken GenerateJwtToken(User user)
         {
-            if (user == null)
-            {
-                throw new ArgumentNullException(nameof(user), "User cannot be null");
-            }
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_jwtSettings.Secret);
 
