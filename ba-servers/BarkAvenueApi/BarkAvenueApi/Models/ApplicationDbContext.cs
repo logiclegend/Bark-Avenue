@@ -6,6 +6,8 @@ namespace BarkAvenueApi.Models
 {
     public class ApplicationDbContext : DbContext
     {
+        public ApplicationDbContext(DbContextOptions options) : base(options) { }
+
         public DbSet<User> users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -18,7 +20,7 @@ namespace BarkAvenueApi.Models
                     .Build();
 
                 string connectionString = configuration.GetConnectionString("DefaultConnection");
-                optionsBuilder.UseNpgsql(connectionString); 
+                optionsBuilder.UseNpgsql(connectionString);
             }
         }
 
