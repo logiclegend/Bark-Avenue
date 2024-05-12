@@ -7,5 +7,6 @@ namespace BarkAvenueApi.Services
     {
         Task<bool> UserExists(string email);
         Task<bool> RegisterUser(RegistrationDTO registrationDTO);
+        Task<bool> ConfirmEmail(string token);
     }
 }
