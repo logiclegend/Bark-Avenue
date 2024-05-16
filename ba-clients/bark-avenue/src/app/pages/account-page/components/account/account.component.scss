@@ -2,7 +2,7 @@
 
 .user-profile {
     // .user-profile__container
-    background-color: rgba($primary, 0.05);
+    background-color: rgba($primary, 0.025);
 
     &__container {
         padding: toRem(80) toRem(20) toRem(30) toRem(20);
@@ -273,22 +273,24 @@
 
     // .profile__blog-part
 
-    &__blog-part {
+    &__blog-part,
+    &__article-part {
         width: 100%;
         height: 320px;
         background: white;
         border-radius: toRem(5);
         box-shadow: 4px 2px 15px rgba($primary, 0.25);
+        margin-bottom: toRem(20);
     }
 
     // .profile__article-part
-
-    &__article-part {
-    }
 }
 
-.blog-part {
+.blog-part,
+.article-part {
     &__container {
+        width: 100%;
+        height: 100%;
         padding: toRem(20);
     }
 
@@ -310,4 +312,91 @@
             left: 0;
         }
     }
+
+    &__blog-cards {
+    }
+}
+
+.blog-cards {
+    // .blog-cards__container
+
+    &__container {
+        padding: toRem(30) 0 toRem(30) 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    // .blog-cards__blog-card
+
+    &__blog-card {
+        width: 50%;
+        height: toRem(200);
+    }
+}
+.blog-card {
+    // .blog-card__container
+
+    &__container {
+        padding: toRem(4) toRem(20) toRem(4) toRem(4);
+        border-radius: toRem(16);
+        box-shadow: 0 2px 10px rgba($primary, 0.25);
+        display: flex;
+        gap: toRem(20);
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    // .blog-card__image
+
+    &__image {
+        width: calc(50% - 30px);
+        height: toRem(192);
+        overflow: hidden;
+        object-fit: cover;
+        border-radius: toRem(12);
+    }
+
+    &__content {
+        width: 50%;
+        height: fit-content;
+    }
+
+    // .blog-card__header
+
+    &__header {
+        font-size: toRem(16);
+        line-height: 100%;
+        font-weight: 600;
+        color: $primary;
+        margin-bottom: toRem(15);
+    }
+
+    // .blog-card__text
+
+    &__text {
+        font-size: toRem(14);
+        line-height: 100%;
+        font-weight: 500;
+        color: rgba($primary, 0.5);
+        margin-bottom: toRem(20);
+    }
+}
+.blog-interaction {
+    display: flex;
+    gap: toRem(10);
+
+    // .blog-interaction__comments
+    // .blog-interaction__likes
+    // .blog-interaction__date
+    // .blog-interaction__share-btn
+    &__comments,
+    &__likes,
+    &__date {
+        font-size: toRem(12);
+        line-height: 100%;
+        font-weight: 500;
+        color: rgba($primary, 1);
+        
+    }
+    &__share-btn{}
 }
