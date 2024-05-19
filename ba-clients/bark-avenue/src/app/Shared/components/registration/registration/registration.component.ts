@@ -19,9 +19,9 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit(): void {
     this.registrationForm = this.formBuilder.group({
-      name: ['', Validators.required], // Обов'язкове поле для імені
-      email: ['', [Validators.required, Validators.email]], // Обов'язкове поле для email і перевірка правильного формату
-      password: ['', [Validators.required, Validators.minLength(8)]] // Обов'язкове поле для паролю та мінімальна довжина 8 символів
+      name: ['', Validators.required], 
+      email: ['', [Validators.required, Validators.email]], 
+      password: ['', [Validators.required, Validators.minLength(8)]] 
     });
   }
 
