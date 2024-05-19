@@ -16,13 +16,9 @@ import { AccountComponent } from './pages/account-page/components/account/accoun
 import { RegistrationComponent } from './user/registration/registration.component';
 import { ModalComponent } from './Shared/components/modal/modal.component';
 import { ModalService } from './Shared/services/modal.service';
-
-import { LoginComponent } from './user/login/login.component';
-import { ContactsComponent } from './pages/contacts-page/components/contacts/contacts.component';
-
-
-
-
+import { LoginComponent } from './Shared/components/login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -45,9 +41,8 @@ import { ContactsComponent } from './pages/contacts-page/components/contacts/con
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
-
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
 

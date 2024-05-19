@@ -167,3 +167,36 @@
 
     
 }
+.registration__inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem; 
+}
+
+.registration__forgot-password {
+    text-align: center;
+    margin-top: 20px; 
+}
+
+
+.error-message {
+    color: red;
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+    word-break: break-all; 
+}
+
+.password-container {
+    position: relative;
+    width: 100%; /* Забезпечує збереження розміру поля паролю */
+}
+
+.eye-icon {
+    position: absolute;
+    top: 60%;
+    right: 10px; 
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}

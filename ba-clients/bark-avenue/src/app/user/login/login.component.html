@@ -1,10 +1,9 @@
-
 <div class="content">
     <div class="row">
         <div class="col">
             <div class="ref-part">
                 <span class="ref-part__title">Вже готовий приєднатись до нашої спільноти?</span>
-                 <button (click)="modalService.open('modal-2')" class="ref-part__link">Зареєструватися</button>
+                <button (click)="modalService.open('modal-2')" class="ref-part__link">Зареєструватися</button>
             </div>
         </div>
         <div class="col">
@@ -16,17 +15,26 @@
                 <li class="social__item"><a href="#" class="social__link _icon-twitter"></a></li>
                 <li class="social__item"><a href="#" class="social__link _icon-youtube"></a></li>
             </ul>
-            <form action="registration" (ngSubmit)="signIn()">
+            <form *ngIf="loginForm" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                 <fieldset class="registration__inputs">
-                    <input class="registration__input-email" name="email" [(ngModel)]="credentials.email" type="text" placeholder="@email" required>
-                    <input class="registration__input-password" name="password" [(ngModel)]="credentials.password" type="password" placeholder="password" required>
+                    <input class="registration__input-email" type="email" placeholder="@email" formControlName="email">
+                    <div *ngIf="submitted && loginForm.get('email')?.errors?.['required']" class="error-message">Поле не може бути порожнім</div>
+                    <div *ngIf="submitted && loginForm.get('email')?.errors?.['email']" class="error-message">Неправильний формат електронної адреси</div>
+                    <div class="password-container">
+                        <input class="registration__input-password" [type]="isPasswordVisible ? 'text' : 'password'" placeholder="password" formControlName="password">
+                        <img *ngIf="!isPasswordVisible; else closedEye" src="../../../../assets/images/img/closed_eye.png" alt="open-eye" class="eye-icon" (click)="togglePasswordVisibility()">
+                        <ng-template #closedEye>
+                            <img src="../../../../assets/images/img/eye.png" alt="closed-eye" class="eye-icon hide-password" (click)="togglePasswordVisibility()">
+                        </ng-template>
+                    </div>                    
+                    <div *ngIf="submitted && loginForm.get('password')?.errors?.['required']" class="error-message">Поле не може бути порожнім</div>
+                    <div *ngIf="submitted && loginForm.get('password')?.errors?.['minlength']" class="error-message">Пароль повинен містити принаймні 8 символів</div>
                     <a class="registration__reset-psw" href="#">Забули пароль?</a>
                     <button class="registration__button button" type="submit">Увійти</button>
                     <div *ngIf="signInError" class="registration__signInError">Yor Sign in faild. Please try again</div>
                 </fieldset>
             </form>
+            
         </div>
     </div>
 </div>
-
-

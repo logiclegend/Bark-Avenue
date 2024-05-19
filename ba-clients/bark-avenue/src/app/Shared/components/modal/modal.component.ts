@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, ElementRef, Input, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, ViewEncapsulation, ElementRef, Input, OnInit, OnDestroy, ViewChild, Injectable } from '@angular/core'; 
 
 import { ModalService } from '../../services/modal.service';
 
@@ -23,13 +23,9 @@ export class ModalComponent implements OnInit, OnDestroy {
     color?: string;
     
     ngOnInit() {
-        // add self (this modal instance) to the modal service so it can be opened from any component
         this.modalService.add(this);
-
-        // move element to bottom of page (just before </body>) so it can be displayed above everything else
         document.body.appendChild(this.element);
 
-        // close modal on background click
         this.element.addEventListener('click', (el: any) => {
             if (el.target.classList.contains('modal-back')) {
                 this.close();
@@ -40,21 +36,17 @@ export class ModalComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        // remove self from modal service
         this.modalService.remove(this);
-        // remove modal element from html
         this.element.remove();
     }
 
     open() {
-        // this.element.style.display = 'block';
         this.modal?.nativeElement.classList.add('modal-open');
         this.isOpen = true;
         
     }
 
     close() {
-        // this.element.style.display = 'none';
         this.modal?.nativeElement.classList.remove('modal-open');
         this.isOpen = false;
     }
