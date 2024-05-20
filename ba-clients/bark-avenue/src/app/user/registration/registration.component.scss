@@ -1,21 +1,9 @@
 @use "fonts/iconfont";
 
-// .wrapper {
-//     position: absolute;
-//     width: 100%;
-//     height: 100%;
-//     top: 0;
-//     background-color: rgba(#0d0d0d, 0.5);
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-// }
-
 .content {
     width: 50rem;
     height: 28.125rem;
     background-color: white;
-    // transform: translateY(-50px);
     border-radius: 40px / 40px;
 
     &::after {
@@ -27,7 +15,6 @@
         top: 0;
         border-radius: 8.25rem 2.5rem 2.5rem 8.25rem;
         background: linear-gradient(268deg, #f00 11.78%, #ff8000 60.04%, rgba(255, 255, 0, 0.8) 107.96%);
-
         box-shadow: 1px 0px 4px 0px rgba(0, 0, 0, 0.25);
     }
 }
@@ -61,10 +48,7 @@
     max-width: fit-content;
     display: flex;
     gap: 1.5625rem;
-    &__item {
-    }
-
-    // .social__link
+   
 
     &__link {
         width: 100%;
@@ -84,7 +68,6 @@
 }
 
 .registration {
-    // .registration__input-name
 
     &__inputs {
         width: 18.75rem;
@@ -128,8 +111,6 @@
     align-items: center;
     gap: 1.875rem;
 
-    // .ref-part__title
-
     &__title {
         color: white;
         text-align: center;
@@ -137,14 +118,11 @@
         font-size: 2.25rem;
         font-weight: 700;
         line-height: 100%;
-        // position: relative;
         z-index: 5;
     }
 
-    // .ref-part__link
 
     &__link {
-        // padding: 0.9375rem 1.875rem;
         color: white;
         text-align: center;
         align-content: center;
@@ -166,4 +144,36 @@
     }
 
     
+}
+.registration__inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem; 
+}
+
+.registration__forgot-password {
+    text-align: center;
+    margin-top: 20px; 
+}
+
+
+.error-message {
+    color: red;
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+    word-break: break-all; 
+}
+
+.password-container {
+    position: relative;
+    width: 100%; 
+}
+.eye-icon {
+    position: absolute;
+    top: 60%;
+    right: 10px; 
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
 }
