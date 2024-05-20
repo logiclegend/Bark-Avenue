@@ -3,6 +3,7 @@ using BarkAvenueApi.Services;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
 using Moq;
+using Xunit;
 
 namespace BarkAvenueApi.Tests
 {
@@ -23,7 +24,8 @@ namespace BarkAvenueApi.Tests
         public async Task RegisterUser_ValidData_ReturnsTrue()
         {
             var emailServiceMock = new Mock<IEmailService>();
-            var userRegistrationService = new UserRegistrationService(_context, emailServiceMock.Object);
+            var tokenServiceMock = new Mock<ITokenService>();
+            var userRegistrationService = new UserRegistrationService(_context, emailServiceMock.Object, tokenServiceMock.Object);
             var registrationDTO = new RegistrationDTO
             {
                 Username = "user",
@@ -42,7 +44,8 @@ namespace BarkAvenueApi.Tests
         public async Task UserExists_UserAlreadyRegistered_ReturnsTrue()
         {
             var emailServiceMock = new Mock<IEmailService>();
-            var userRegistrationService = new UserRegistrationService(_context, emailServiceMock.Object);
+            var tokenServiceMock = new Mock<ITokenService>();
+            var userRegistrationService = new UserRegistrationService(_context, emailServiceMock.Object, tokenServiceMock.Object);
 
             var registrationDTO = new RegistrationDTO
             {
@@ -65,6 +68,7 @@ namespace BarkAvenueApi.Tests
             using (var context = new ApplicationDbContext(_options))
             {
                 var emailServiceMock = new Mock<IEmailService>();
+                var tokenServiceMock = new Mock<ITokenService>();
                 var registrationDTO = new RegistrationDTO
                 {
                     Username = "user",
@@ -73,7 +77,7 @@ namespace BarkAvenueApi.Tests
                     Password_user = "password"
                 };
 
-                var userRegistrationService = new UserRegistrationService(context, emailServiceMock.Object);
+                var userRegistrationService = new UserRegistrationService(context, emailServiceMock.Object, tokenServiceMock.Object);
 
                 await userRegistrationService.RegisterUser(registrationDTO);
                 var savedUser = await context.users.FirstOrDefaultAsync(u => u.Email == registrationDTO.Email);
@@ -90,9 +94,11 @@ namespace BarkAvenueApi.Tests
                 savedUser.LastLogin.Date.Should().BeCloseTo(DateTimeOffset.UtcNow.Date, TimeSpan.FromSeconds(1));
             }
         }
+
         public void Dispose()
         {
             _context.Dispose();
         }
     }
 }
+

@@ -49,8 +49,8 @@ namespace BarkAvenueApi.Services
                     PhoneNumber = registrationDTO.Phone_number,
                     PasswordUser = registrationDTO.Password_user,
                     RoleUser = "User",
-                    DateRegistration = DateTimeOffset.UtcNow,
-                    LastLogin = DateTimeOffset.UtcNow,
+                    DateRegistration = DateTime.UtcNow,
+                    LastLogin = DateTime.UtcNow,
                     IsActive = false,
                     PermissionUser = "Normal"
                 };

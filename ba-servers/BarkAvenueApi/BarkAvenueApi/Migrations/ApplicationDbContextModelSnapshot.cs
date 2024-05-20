@@ -22,50 +22,53 @@ namespace BarkAvenueApi.Migrations
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
             modelBuilder.Entity("BarkAvenueApi.Models.User", b =>
-                {
-                    b.Property<int>("UserId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+            {
+                b.Property<int>("UserId")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("UserId"));
+                NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("UserId"));
 
-                    b.Property<DateTime>("DateRegistration")
-                        .HasColumnType("timestamp with time zone");
+                b.Property<DateTime>("DateRegistration")
+                    .HasColumnType("timestamp");
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("text");
+                b.Property<string>("Email")
+                    .IsRequired()
+                    .HasColumnType("text");
 
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("boolean");
+                b.Property<bool>("IsActive")
+                    .HasColumnType("boolean");
 
-                    b.Property<DateTime>("LastLogin")
-                        .HasColumnType("timestamp with time zone");
+                b.Property<DateTime>("LastLogin")
+                    .HasColumnType("timestamp");
 
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("text");
+                b.Property<string>("Password")
+                    .IsRequired()
+                    .HasColumnType("text");
 
-                    b.Property<string>("Permission")
-                        .IsRequired()
-                        .HasColumnType("text");
+                b.Property<string>("Permission")
+                    .IsRequired()
+                    .HasColumnType("text");
 
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasColumnType("text");
+                b.Property<string>("PhoneNumber")
+                    .IsRequired()
+                    .HasColumnType("text");
 
-                    b.Property<string>("Role")
-                        .IsRequired()
-                        .HasColumnType("text");
+                b.Property<string>("Role")
+                    .IsRequired()
+                    .HasColumnType("text");
 
-                    b.Property<string>("Username")
-                        .IsRequired()
-                        .HasColumnType("text");
+                b.Property<string>("Username")
+                    .IsRequired()
+                    .HasColumnType("text");
 
-                    b.HasKey("UserId");
+                b.Property<bool>("IsEmailConfirmed")
+                    .HasColumnType("boolean");
 
-                    b.ToTable("Users");
-                });
+                b.HasKey("UserId");
+
+                b.ToTable("Users");
+            });
 #pragma warning restore 612, 618
         }
     }

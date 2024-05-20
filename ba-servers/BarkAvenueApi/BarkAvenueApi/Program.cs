@@ -11,13 +11,17 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
 builder.Services.AddTransient<IEmailService, EmailService>();
+builder.Services.AddScoped<ITokenService, TokenService>(); 
+
+builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));
 
 builder.Services.AddDbContext<ApplicationDbContext>();
 
 
 builder.Services.AddTransient<IUserRegistrationService>(provider =>
     new UserRegistrationService(provider.GetRequiredService<ApplicationDbContext>(),
-                                     provider.GetRequiredService<IEmailService>()));
+                                     provider.GetRequiredService<IEmailService>(),
+                                      provider.GetRequiredService<ITokenService>()));
 
 var app = builder.Build();
 
