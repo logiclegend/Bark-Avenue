@@ -415,8 +415,10 @@ FodyWeavers.xsd
 /ba-servers/BarkAvenueApi/BarkAvenueApi/obj/Debug/net8.0/BarkAvenueApi.csproj.AssemblyReference.cache
 
 
+
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
+# Compiled output
 ba-clients/bark-avenue/dist
 ba-clients/bark-avenue/tmp
 ba-clients/bark-avenue/out-tsc

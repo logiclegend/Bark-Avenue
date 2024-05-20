@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, map, Observable } from "rxjs";
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { BehaviorSubject, catchError, map, Observable, throwError } from "rxjs";
 
-import { IUser, IUserCredentials } from "./user.model";
+import { IUser, IUserCredentials, IUserSignUpCredentials } from "./user.model";
 
 @Injectable({
     providedIn: 'root',
@@ -10,7 +10,7 @@ import { IUser, IUserCredentials } from "./user.model";
 
 export class UserService {
     private user: BehaviorSubject<IUser | null>;
-    
+
     constructor(private http: HttpClient) {
         this.user = new BehaviorSubject<IUser | null>(null);
     }
@@ -27,6 +27,10 @@ export class UserService {
                 return user
             }))
     }
+
+    signUp(credentials: IUserSignUpCredentials): Observable<string> {
+        return this.http.post('/api/Registration', credentials, { responseType: "text" });
+      }
 
     signOut(){
         this.user.next(null);
