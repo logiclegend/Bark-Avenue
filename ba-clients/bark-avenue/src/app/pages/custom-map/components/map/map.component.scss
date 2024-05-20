@@ -1,0 +1,306 @@
+@import "global";
+
+.map {
+    margin-bottom: toRem(60);
+    width: 1000px;
+    height: auto;
+
+    &__container {
+    }
+}
+
+.map-nav {
+    position: absolute;
+    top: 20%;
+
+    &__open-button {
+        background: $primary;
+        color: white;
+        font-size: toRem(14);
+        line-height: 100%;
+        font-weight: 600;
+        padding: toRem(18) toRem(30);
+        border-radius: toRem(40);
+        z-index: 1;
+    }
+
+    &__close-button {
+        position: absolute;
+        top: -15px;
+        right: -15px;
+        background-color: white;
+        border-radius: 50%;
+        border: 2px solid rgba($primary, 0.1);
+        width: toRem(40);
+        height: toRem(40);
+        color: $primary;
+        font-size: toRem(20);
+        font-weight: 600;
+    }
+
+    // .map-nav__nav-window
+    &__nav-window {
+        top: 0;
+        position: absolute;
+        z-index: 5;
+        background: white;
+        width: toRem(500);
+        height: toRem(500);
+        padding: toRem(30) toRem(30);
+        transform: translateX(-500px);
+        opacity: 0;
+        transition: all 0.2s ease-in-out;
+
+        &--open {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+}
+
+.nav-window {
+    // .nav-window__head
+
+    &__head {
+        display: flex;
+        align-items: center;
+        column-gap: toRem(30);
+    }
+
+    // .nav-window__search
+
+    &__search {
+        width: 100%;
+        height: toRem(50);
+        display: flex;
+    }
+
+    &__btn-show-input {
+        width: toRem(50);
+        height: toRem(50);
+        border-radius: 50%;
+        background-color: rgba($primary, 0.05);
+        transition: all 0.1s ease-in-out 0.3s;
+
+        &--active {
+            border-radius: 50% 0 0 50%;
+            transition: all 0s ease-in-out;
+            &:hover {
+                transform: none !important;
+                cursor: default;
+            }
+        }
+
+        &:hover {
+            transform: scale(1.05);
+        }
+    }
+
+    &__btn-hide-input {
+        width: toRem(50);
+        height: toRem(50);
+        border-radius: 0 50% 50% 0;
+        background-color: rgba($primary, 0.05);
+        display: none;
+    }
+
+    // .nav-window__search-input
+    &__search-input {
+        width: 0px;
+        height: 100%;
+        background-color: rgba($primary, 0.05);
+        color: $primary;
+        font-size: toRem(14);
+        font-weight: 600;
+        transition: all 0.3s ease-in-out;
+
+        &--open {
+            width: 100%;
+            padding: toRem(20);
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+        &::placeholder {
+            color: rgba($primary, 0.15);
+        }
+    }
+
+    // .nav-window__list
+
+    &__list {
+        display: none;
+        justify-content: space-between;
+        width: 100%;
+        // transition: all .4s ease-in-out;
+        opacity: 1;
+        // animation-delay: 10s;
+        animation: show;
+        animation-duration: 1s;
+        animation-iteration-count: 1;
+
+        &--show {
+            display: flex;
+            @keyframes show {
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    // .nav-window__option
+
+    &__option {
+    }
+
+    // .nav-window__body
+
+    &__body {
+    }
+
+    // .nav-window__content
+
+    &__content {
+    }
+}
+.option {
+    &__hotels,
+    &__parks,
+    &__restaurants {
+        width: toRem(60);
+        height: toRem(60);
+        border-radius: 50%;
+    }
+
+    // .option__hotels
+    &__hotels {
+        background-color: rgba(orange, 0.4);
+        transition: all 0.2s ease-in-out;
+        &:hover {
+            background-color: rgba(orange, 1);
+        }
+    }
+    // .option__parks
+    &__parks {
+        background-color: rgba(green, 0.4);
+        transition: all 0.2s ease-in-out;
+        &:hover {
+            background-color: rgba(green, 1);
+        }
+    }
+
+    // .option__restaurants
+    &__restaurants {
+        background-color: rgba(red, 0.4);
+        transition: all 0.2s ease-in-out;
+        &:hover {
+            background-color: rgba(red, 1);
+        }
+    }
+}
+
+.place-card {
+    width: toRem(300);
+    height: toRem(400);
+    background: white;
+    position: absolute;
+    top: 20%;
+    display: none;
+    // .place-card__img
+
+    &__close-btn {
+        position: absolute;
+        top: toRem(10);
+        right: toRem(10);
+        color: white;
+        font-size: toRem(16);
+        font-weight: 600;
+    }
+
+    &__content {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    &__img {
+        width: 100%;
+        height: toRem(200);
+        overflow: hidden;
+
+        img {
+            object-fit: fill;
+            object-position: 50% 50%;
+            height: 100%;
+            width: 100%;
+        }
+        
+        
+    }
+
+    // .place-card__place-title
+
+    &__place-title {
+        font-size: toRem(20);
+        line-height: 100%;
+        font-weight: 700;
+        color: $primary;
+        max-width: toRem(260);
+        padding: toRem(15) toRem(20) toRem(10) toRem(20);
+    }
+
+    // .place-card__phone-number
+
+    &__phone-number {
+        
+        font-size: toRem(14);
+        font-weight: 500;
+        color: $primary;
+        padding: toRem(0) toRem(20) toRem(15) toRem(45);
+    }
+
+    &__address {
+        font-size: toRem(14);
+        font-weight: 500;
+        line-height: 120%;
+        padding: toRem(0) toRem(20) toRem(15) toRem(45);
+        max-width: toRem(260);
+    }
+
+    // .place-card__link
+
+    &__link {
+        width: 100%;
+        font-size: toRem(16);
+        line-height: 100%;
+        position: absolute;
+        bottom: 0;
+        text-align: center;
+        font-weight: 600;
+        color: $mainOrangeColor;
+        padding: toRem(0) toRem(20) toRem(20) toRem(20);
+
+        &::before {
+            content: "";
+            width: 100%;
+            height: 1px;
+            background: rgba($primary, 0.15);
+            margin-bottom: 15px;
+        }
+    }
+}
+
+._icon-call-full::before,
+._icon-location-full:before {
+    font-size: toRem(18);
+    position: absolute;
+    left: 0;
+    padding-left: toRem(20);
+    color: $primary;
+}

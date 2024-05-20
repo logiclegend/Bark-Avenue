@@ -2,6 +2,9 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { NgxGpAutocompleteModule } from "@angular-magic/ngx-gp-autocomplete";
+import { Loader } from '@googlemaps/js-api-loader';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home-page/components/home/home.component';
@@ -19,6 +22,7 @@ import { ModalService } from './Shared/services/modal.service';
 
 import { LoginComponent } from './user/login/login.component';
 import { ContactsComponent } from './pages/contacts-page/components/contacts/contacts.component';
+import { MapComponent } from './pages/custom-map/components/map/map.component';
 
 
 
@@ -38,20 +42,31 @@ import { ContactsComponent } from './pages/contacts-page/components/contacts/con
     RegistrationComponent,
     ModalComponent,
     LoginComponent,
-    ContactsComponent
-
+    ContactsComponent,
+    MapComponent,
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    GoogleMapsModule,
+    NgxGpAutocompleteModule,
 
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
 
-  providers: [ModalService],
+  providers: [
+    ModalService,
+    {
+      provide: Loader,
+      useValue: new Loader({
+        apiKey: 'AIzaSyBbA_EndVyyt4nBIB8x6itxhBC9uegDf08',
+        libraries: ['places']
+      })
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

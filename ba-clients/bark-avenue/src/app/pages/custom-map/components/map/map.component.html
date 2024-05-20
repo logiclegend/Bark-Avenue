@@ -1,0 +1,69 @@
+
+<google-map 
+    #myMap="googleMap"
+    id="map"
+    class="map"
+    [center]="center"
+    [zoom]="zoom" 
+    [options]="options"
+    width="100%" 
+    height="100vh"  
+>
+    <map-marker
+        #myMarker
+        *ngFor="let marker of markers"
+        [position]="marker.position"
+        [options]="marker.options"
+        [icon]="marker.icon"
+    ></map-marker>
+</google-map>
+<div class="map__container">
+    <div class="map-nav">
+        <button [style.display]="!btnNavWindowOpen ? 'block' : 'none'" type="button" class="map-nav__open-button" (click)="openNavWindow()">Навігація по карті</button>
+        <div class="map-nav__nav-window" id="navWindow">
+            <button type="button" class="map-nav__close-button" (click)="closeNavWindow()">x</button>
+            <div class="nav-window__head">
+                <div [style.width]="!btnShowSearch ? '30%' : '100%'" class="nav-window__search">
+                    <button class="nav-window__btn-show-input" type="button" id="showInput" (click)="showSearch()"></button>
+                    <input #placesRef="ngx-places" ngx-gp-autocomplete (onAddressChange)="handleAddressChange($event)" class="nav-window__search-input" id="autocomplete" placeholder="Пошук . . .">
+                    <button [style.display]="btnShowSearch ? 'block' : 'none'" class="nav-window__btn-hide-input"type="button" id="hideInput" (click)="hideSearch()">x</button>
+                </div>
+                <ul [class.nav-window__list--show]="!btnShowSearch" class="nav-window__list">
+                    <li class="nav-window__option option">
+                        <button class="option__hotels" (click)="searchPlaces('hotels')"></button>
+                    </li>
+                    <li class="nav-window__option option">
+                        <button class="option__parks" (click)="searchPlaces('parks')"></button>
+                    </li>
+                    <li class="nav-window__option option">
+                        <button class="option__restaurants" (click)="searchPlaces('restaurants')"></button>
+                    </li>
+                </ul>
+            </div>
+            <div class="nav-window__body">
+                <div class="nav-window__content">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="place-card" id="placeCard">
+        <div class="place-card__content">
+            <button class="place-card__close-btn" type="button" (click)="hidenSearhPlace()"><- назад</button>
+            <div class="place-card__img">
+                <img [src]="this.placeData.photo" alt="Image">
+            </div>
+            <h3 class="place-card__place-title">
+                {{this.placeData.name}}
+            </h3>
+            <div class="place-card__phone-number _icon-call-full">
+                {{this.placeData.phoneNumber}}
+            </div>
+            <div class="place-card__address _icon-location-full">
+                {{this.placeData.location}}
+            </div>
+            <a [href]="this.placeData.link" target="_blank" class="place-card__link">Дивитись більше</a>
+        </div>
+    </div>
+</div>
+
