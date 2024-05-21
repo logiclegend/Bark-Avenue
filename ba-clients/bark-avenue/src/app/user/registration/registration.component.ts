@@ -21,7 +21,6 @@ export class RegistrationComponent implements OnInit {
     protected modalService: ModalService,
     private userService: UserService,
     private router: Router
-    
   ) {}
 
   ngOnInit(): void {
@@ -29,6 +28,7 @@ export class RegistrationComponent implements OnInit {
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
+      confirmPassword: ['', Validators.required]
     });
   }
 
@@ -44,23 +44,23 @@ export class RegistrationComponent implements OnInit {
     }
 
     const credentials: IUserSignUpCredentials = {
-      username: this.registrationForm.value.name,
-      email: this.registrationForm.value.email,
-      phone_number: '0977688807',
-      password_user: this.registrationForm.value.password,
-      confirm_password: this.registrationForm.value.password 
+      username: this.registrationForm.get('name')?.value,
+      email: this.registrationForm.get('email')?.value,
+      phone_number: '0977688807', // You can change this if it's needed
+      password_user: this.registrationForm.get('password')?.value,
+      confirm_password: this.registrationForm.get('confirmPassword')?.value,
     };
 
     this.userService.signUp(credentials).subscribe({
       next: (res: any) => {
         this.modalService.close();
         this.router.navigate(['/home']);
-        setTimeout(() => { alert(res); }, 1500);
+        setTimeout(() => { alert(res); }, 1000);
       },
       error: (err: HttpErrorResponse) => {
         console.log(err.name);
         console.log(err.message);
-        console.log(err.status);  
+        console.log(err.status);
       }
     });
   }
