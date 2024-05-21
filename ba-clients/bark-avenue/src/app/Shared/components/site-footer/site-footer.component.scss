@@ -115,6 +115,11 @@
    }
 }
 
+.contacts__link{
+   padding-left: toRem(20);
+   position: relative;
+}
+
 .social {
    @media (max-width: $tablet) {
       width: 100%;
@@ -226,6 +231,16 @@
    // color: white;
    font-size: toRem(22);
    line-height: 100%;
+   color: white;
+}
+
+._icon-call::before,
+._icon-location-full::before,
+._icon-letter::before{
+   color: white;
+   font-size: toRem(14);
+   position: absolute;
+   left: 0;
 }
 
 //====================================================================================================

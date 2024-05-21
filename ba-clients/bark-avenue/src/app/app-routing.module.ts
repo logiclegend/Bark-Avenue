@@ -9,11 +9,13 @@ import { RegistrationComponent } from './user/registration/registration.componen
 import { LoginComponent } from './user/login/login.component';
 
 import { ContactsComponent } from './pages/contacts-page/components/contacts/contacts.component';
+import { MapComponent } from './pages/custom-map/components/map/map.component';
 
 const routes: Routes = [
   {path: 'home' , component: HomeComponent , title: "Bark Avenue"},
   {path: 'contacts' , component: ContactsComponent , title: "Bark Avenue"},
   {path: 'account' , component: AccountComponent , title: "Bark Avenue"},
+  {path: 'map' , component: MapComponent , title: "Bark Avenue"},
   {path: '', redirectTo: '/home' , pathMatch: 'full' },
   {path: '**' , component: EmptyPageComponent}
 ];

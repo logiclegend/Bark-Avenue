@@ -1,0 +1,81 @@
+
+<google-map 
+    #myMap="googleMap"
+    id="map"
+    class="map"
+    [center]="center"
+    [zoom]="zoom" 
+    [options]="options"
+    width="100%" 
+    height="100vh"  
+>
+    <map-marker
+        #myMarker
+        *ngFor="let marker of markers"
+        [position]="marker.position"
+        [options]="marker.options"
+        [icon]="marker.icon"
+        [animation]="marker.animation"
+    ></map-marker>
+</google-map>
+<div class="map__container">
+    <div class="map-nav">
+        <button [style.display]="!btnNavWindowOpen ? 'block' : 'none'" type="button" class="map-nav__open-button" (click)="openNavWindow()">Навігація по карті</button>
+        <div class="map-nav__nav-window" id="navWindow">
+            <button type="button" class="map-nav__close-button" (click)="closeNavWindow()">x</button>
+            <div class="nav-window__head">
+                <div [style.width]="!btnShowSearch ? '30%' : '100%'" class="nav-window__search">
+                    <button class="nav-window__btn-show-input" type="button" id="showInput" (click)="showSearch()">
+                        <img src="../../../../../assets/images/icons/search.svg" alt="Image">
+                    </button>
+                    <input #placesRef="ngx-places" ngx-gp-autocomplete (onAddressChange)="handleAddressChange($event)" class="nav-window__search-input" id="autocomplete" placeholder="Пошук . . .">
+                    <button [style.display]="btnShowSearch ? 'block' : 'none'" class="nav-window__btn-hide-input"type="button" id="hideInput" (click)="hideSearch()">x</button>
+                </div>
+                <ul [class.nav-window__list--show]="!btnShowSearch" class="nav-window__list">
+                    <li class="nav-window__option option">
+                        <button class="option__hotels _icon-hotel" (click)="searchPetFriendlyPlaces('pet_store', '../../../../../assets/images/icons/hotels-location.svg')"></button>
+                        <span class="option__sub-title">Готелі</span>
+                    </li>
+                    <li class="nav-window__option option">
+                        <button class="option__parks _icon-trees" (click)="searchPetFriendlyPlaces('park', '../../../../../assets/images/icons/park-location.svg')"></button>
+                        <span class="option__sub-title">Парки</span>
+                    </li>
+                    <li class="nav-window__option option">
+                        <button class="option__restaurants _icon-restaurants" (click)="searchPetFriendlyPlaces('restaurant', '../../../../../assets/images/icons/restaurants-location.svg')"></button>
+                        <span class="option__sub-title">Ресторани</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="nav-window__body">
+                <div class="nav-window__content">
+                    <div class="nav-window__card" *ngFor="let place of places">
+                        <div class="nav-window__carg-img">
+                            <img [src]="place.photos[0].getUrl()" alt="Image">
+                        </div>
+                        <div class="nav-window__card-title">{{place.name}}</div>
+                        <div class="nav-window__card-address _icon-location-full">{{place.vicinity}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="place-card" id="placeCard">
+        <div class="place-card__content">
+            <button class="place-card__close-btn" type="button" (click)="hidenSearhPlace()"><- назад</button>
+            <div class="place-card__img">
+                <img [src]="this.placeData.photo" alt="Image">
+            </div>
+            <h3 class="place-card__place-title">
+                {{this.placeData.name}}
+            </h3>
+            <div class="place-card__phone-number _icon-call-full">
+                {{this.placeData.phoneNumber}}
+            </div>
+            <div class="place-card__address _icon-location-full">
+                {{this.placeData.location}}
+            </div>
+            <a [href]="this.placeData.link" target="_blank" class="place-card__link">Дивитись більше</a>
+        </div>
+    </div>
+</div>
+

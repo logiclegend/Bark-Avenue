@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { NgxGpAutocompleteModule } from "@angular-magic/ngx-gp-autocomplete";
+import { Loader } from '@googlemaps/js-api-loader';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home-page/components/home/home.component';
@@ -17,6 +20,7 @@ import { ModalComponent } from './Shared/components/modal/modal.component';
 import { ModalService } from './Shared/services/modal.service';
 import { LoginComponent } from './user/login/login.component';
 import { ContactsComponent } from './pages/contacts-page/components/contacts/contacts.component';
+import { MapComponent } from './pages/custom-map/components/map/map.component';
 
 @NgModule({
   declarations: [
@@ -31,17 +35,34 @@ import { ContactsComponent } from './pages/contacts-page/components/contacts/con
     RegistrationComponent,
     ModalComponent,
     LoginComponent,
-    ContactsComponent
+    ContactsComponent,
+    MapComponent,
+
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    GoogleMapsModule,
+    NgxGpAutocompleteModule,
     ReactiveFormsModule
+
   ],
-  providers: [ModalService],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA],
+
+  providers: [
+    ModalService,
+    {
+      provide: Loader,
+      useValue: new Loader({
+        apiKey: process.env["apiKey"] || 'DEF_A',
+        libraries: ['places']
+      })
+    },
+  ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
