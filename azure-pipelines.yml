@@ -16,13 +16,16 @@ stages:
       - job: Build
         displayName: 'Build Job'
         steps:
+          - script: echo "Starting NuGet restore"
           - task: NuGetToolInstaller@1
 
+          - script: echo "Restoring NuGet packages"
           - task: NuGetCommand@2
             inputs:
               restoreSolution: '$(solution)'
               feedsToUse: 'config'
 
+          - script: echo "Building the solution"
           - task: VSBuild@1
             inputs:
               solution: '$(solution)'
@@ -30,11 +33,13 @@ stages:
               platform: '$(buildPlatform)'
               configuration: '$(buildConfiguration)'
 
+          - script: echo "Running unit tests"
           - task: VSTest@2
             inputs:
               platform: '$(buildPlatform)'
               configuration: '$(buildConfiguration)'
 
+          - script: echo "Publishing build artifacts"
           - task: PublishBuildArtifacts@1
             inputs:
               pathToPublish: '$(Build.ArtifactStagingDirectory)'
@@ -50,9 +55,11 @@ stages:
           runOnce:
             deploy:
               steps:
+                - script: echo "Downloading artifacts"
                 - download: current
                   artifact: drop
 
+                - script: echo "Deploying to Staging"
                 - task: AzureRmWebAppDeployment@4
                   inputs:
                     ConnectionType: 'AzureRM'
@@ -71,9 +78,11 @@ stages:
           runOnce:
             deploy:
               steps:
+                - script: echo "Downloading artifacts"
                 - download: current
                   artifact: drop
 
+                - script: echo "Deploying to Production"
                 - task: AzureRmWebAppDeployment@4
                   inputs:
                     ConnectionType: 'AzureRM'
