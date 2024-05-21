@@ -19,6 +19,13 @@ builder.Services.AddTransient<IUserRegistrationService>(provider =>
     new UserRegistrationService(provider.GetRequiredService<ApplicationDbContext>(),
                                      provider.GetRequiredService<IEmailService>()));
 
+builder.Services.AddTransient<IUserAuthenticationService, UserAuthenticationService>();
+builder.Services.AddTransient(sp => new JwtSettings
+{
+    Secret = builder.Configuration.GetValue<string>("JwtSettings:Secret"),
+    ExpiryInHours = builder.Configuration.GetValue<int>("JwtSettings:ExpiryInHours")
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

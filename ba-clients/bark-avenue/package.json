@@ -21,18 +21,21 @@
     "@angular/platform-browser": "^16.0.0",
     "@angular/platform-browser-dynamic": "^16.0.0",
     "@angular/router": "^16.0.0",
+
     "@googlemaps/js-api-loader": "^1.16.6",
     "@types/google.maps": "^3.55.9",
     "@types/node": "^20.12.12",
     "ngx-google-places-autocomplete": "^2.0.5",
+
     "rxjs": "~7.8.0",
+    "serve-static": "^1.15.0",
     "swiper": "^11.0.7",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^16.0.0",
-    "@angular/cli": "~16.0.0",
+    "@angular/cli": "^16.2.14",
     "@angular/compiler-cli": "^16.0.0",
     "@types/jasmine": "~4.3.0",
     "dotenv-webpack": "^8.1.0",
@@ -45,3 +48,4 @@
     "typescript": "~5.0.2"
   }
 }
+

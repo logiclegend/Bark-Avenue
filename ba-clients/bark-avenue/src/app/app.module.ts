@@ -1,6 +1,6 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { NgxGpAutocompleteModule } from "@angular-magic/ngx-gp-autocomplete";
@@ -12,22 +12,15 @@ import { SiteHeaderComponent } from './Shared/components/site-header/site-header
 import { SiteFooterComponent } from './Shared/components/site-footer/site-footer.component';
 import { AppRoutingModule } from './app-routing.module';
 import { EmptyPageComponent } from './pages/empty-page/empty-page.component';
-
 import { AccordionComponent } from './Shared/components/accordion/accordion.component';
 import { SwiperComponent } from './Shared/components/swiper/swiper.component';
 import { AccountComponent } from './pages/account-page/components/account/account.component';
 import { RegistrationComponent } from './user/registration/registration.component';
 import { ModalComponent } from './Shared/components/modal/modal.component';
 import { ModalService } from './Shared/services/modal.service';
-
 import { LoginComponent } from './user/login/login.component';
 import { ContactsComponent } from './pages/contacts-page/components/contacts/contacts.component';
 import { MapComponent } from './pages/custom-map/components/map/map.component';
-
-
-
-
-
 
 @NgModule({
   declarations: [
@@ -45,6 +38,7 @@ import { MapComponent } from './pages/custom-map/components/map/map.component';
     ContactsComponent,
     MapComponent,
 
+
   ],
   imports: [
     BrowserModule,
@@ -53,6 +47,7 @@ import { MapComponent } from './pages/custom-map/components/map/map.component';
     HttpClientModule,
     GoogleMapsModule,
     NgxGpAutocompleteModule,
+    ReactiveFormsModule
 
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
@@ -67,6 +62,7 @@ import { MapComponent } from './pages/custom-map/components/map/map.component';
       })
     },
   ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
