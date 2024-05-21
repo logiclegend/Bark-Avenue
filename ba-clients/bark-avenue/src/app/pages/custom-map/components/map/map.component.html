@@ -49,11 +49,13 @@
             <div class="nav-window__body">
                 <div class="nav-window__content">
                     <div class="nav-window__card" *ngFor="let place of places">
-                        <div class="nav-window__carg-img">
-                            <img [src]="place.photos[0].getUrl()" alt="Image">
-                        </div>
-                        <div class="nav-window__card-title">{{place.name}}</div>
-                        <div class="nav-window__card-address _icon-location-full">{{place.vicinity}}</div>
+                        <a [href]="this.place.website">
+                            <div class="nav-window__carg-img">
+                                <img [src]="place.photos[0].getUrl()" alt="Image">
+                            </div>
+                            <div class="nav-window__card-title">{{place.name}}</div>
+                            <div class="nav-window__card-address _icon-location-full">{{place.vicinity}}</div>
+                        </a>
                     </div>
                 </div>
             </div>

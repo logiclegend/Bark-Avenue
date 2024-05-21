@@ -103,10 +103,12 @@ export class MapComponent implements OnInit {
 
   searchPetFriendlyPlaces(type: string, icon: string) {
     let center = new google.maps.LatLng(49.8382600, 24.0232400);
+    this.places.splice(0, this.places.length);
     this.mapService.searchPlaces(this.map.googleMap!, center, 10000 ,type)
       .then(results => {
         this.clearMarkers();
         results.forEach(result => {
+          result.website
           const marker = new google.maps.Marker({
             position: result.geometry?.location,
             map: this.map.googleMap!,
