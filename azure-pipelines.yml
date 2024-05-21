@@ -1,5 +1,5 @@
 trigger:
-  - main
+  - develop
 
 pool:
   vmImage: 'windows-latest'
@@ -58,7 +58,7 @@ stages:
                     ConnectionType: 'AzureRM'
                     azureSubscription: 'Azuresubscription1'
                     appType: 'webApp'
-                    WebAppName: 'test08765'
+                    WebAppName: 'BarkAvenue'
                     package: '$(Pipeline.Workspace)/drop/WebApp.zip'
 
   - stage: DeployProduction
@@ -79,5 +79,5 @@ stages:
                     ConnectionType: 'AzureRM'
                     azureSubscription: 'Azuresubscription1'
                     appType: 'webApp'
-                    WebAppName: 'test08765'
+                    WebAppName: 'BarkAvenue'
                     package: '$(Pipeline.Workspace)/drop/WebApp.zip'
