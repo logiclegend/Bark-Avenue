@@ -1,0 +1,75 @@
+<swiper-container class="swiper"  
+    (slideChange)="onSlideChange()"
+    [loop]="true"
+    [gap]="20"
+    #swiperEx>
+    <swiper-slide class="swiper-slide">
+        <img class="image" src="../../../../assets/images/img/swiper.jpg" alt="Image">
+        <div class="row">
+            <div class="header">
+                <div class="header__categories">
+                    <a href="#" class="header__category header__category--new">нове</a>
+                    <a href="#" class="header__category header__category--popular">популярне</a>
+                    <a href="#" class="header__category header__category--type">догляд</a>
+                </div>
+                <h1 class="header__title">
+                    Найкращий корм для пухнастих
+                </h1>
+                <div class="header__additions">
+                    <span>132121</span>
+                    <span>156161</span>
+                    <span>165156</span>
+                </div>
+            </div> 
+        </div>   
+     </swiper-slide>
+     <swiper-slide class="swiper-slide">
+        <img class="image" src="../../../../assets/images/img/blog_art-2.jpg" alt="Image">
+        <div class="row">
+            <div class="header">
+                <div class="header__categories">
+                    <a href="#" class="header__category header__category--new">нове</a>
+                    <a href="#" class="header__category header__category--popular">популярне</a>
+                    <a href="#" class="header__category header__category--type">догляд</a>
+                </div>
+                <h1 class="header__title">
+                    Найкращий корм  пухнастих
+                </h1>
+                <div class="header__additions">
+                    <span>132121</span>
+                    <span>156161</span>
+                    <span>165156</span>
+                </div>
+            </div> 
+        </div>   
+     </swiper-slide>
+     <swiper-slide class="swiper-slide">
+        <img class="image" src="../../../../assets/images/img/blog_art-1.jpg" alt="Image">
+        <div class="row">
+            <div class="header">
+                <div class="header__categories">
+                    <a href="#" class="header__category header__category--new">нове</a>
+                    <a href="#" class="header__category header__category--popular">популярне</a>
+                    <a href="#" class="header__category header__category--type">догляд</a>
+                </div>
+                <h1 class="header__title">
+                    Найкращий  для пухнастих
+                </h1>
+                <div class="header__additions">
+                    <span>132121</span>
+                    <span>156161</span>
+                    <span>165156</span>
+                </div>
+            </div> 
+        </div>   
+     </swiper-slide>                       
+</swiper-container>
+                
+                
+<div class="swiper-pagination"></div>
+<div class="swiper-buttons">
+    <button class="swiper-button-prev _icon-angle" (click)="goPrev()"></button>
+    <button class="swiper-button-next _icon-angle" (click)="goNext()"></button>
+</div>
+
+
