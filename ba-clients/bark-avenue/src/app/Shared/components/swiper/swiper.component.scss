@@ -1,3 +1,5 @@
+@import "global";
+
 .swiper {
     width: 100%;
     height: 100%;
@@ -70,7 +72,24 @@
     // .header__additions
 
     &__additions {
+        display: flex;
+        column-gap: 15px;
+        span {
+            position: relative;
+            font-size: toRem(14);
+            color: rgba($primary, 0.7);
+            padding-left: toRem(25);
+        }
     }
+}
+
+._icon-calendar::before,
+._icon-comment::before,
+._icon-like::before {
+    color: rgba($primary, 0.5);
+    font-size: toRem(16);
+    position: absolute;
+    left: 0;
 }
 
 .swiper-buttons {
@@ -95,19 +114,19 @@
     background-color: #0d0d0d;
     border-radius: 50%;
     z-index: 5;
+    color: white;
 }
 
 .swiper-button-prev {
-    &._icon-angle::before {
+    &._icon-arrow-right::before {
         font-size: toRem(16);
         color: white;
-        transform: rotateZ(90deg);
+        transform: rotateZ(-180deg);
     }
 }
 .swiper-button-next {
-    &._icon-angle::before {
+    &._icon-arrow-right::before {
         font-size: toRem(16);
         color: white;
-        transform: rotateZ(-90deg);
     }
 }

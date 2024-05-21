@@ -62,7 +62,7 @@ import { MapComponent } from './pages/custom-map/components/map/map.component';
     {
       provide: Loader,
       useValue: new Loader({
-        apiKey: 'AIzaSyBbA_EndVyyt4nBIB8x6itxhBC9uegDf08',
+        apiKey: process.env["apiKey"] || 'DEF_A',
         libraries: ['places']
       })
     },

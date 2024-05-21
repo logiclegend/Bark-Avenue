@@ -65,6 +65,11 @@
         display: flex;
         align-items: center;
         column-gap: toRem(30);
+        margin-bottom: toRem(30);
+
+        &:not(:first-child) {
+            // align-items: center;
+        }
     }
 
     // .nav-window__search
@@ -79,7 +84,7 @@
         width: toRem(50);
         height: toRem(50);
         border-radius: 50%;
-        background-color: rgba($primary, 0.05);
+        background: rgba($primary, 0.05);
         transition: all 0.1s ease-in-out 0.3s;
 
         &--active {
@@ -92,7 +97,13 @@
         }
 
         &:hover {
-            transform: scale(1.05);
+            transform: scale(1.02);
+            background: rgba($primary, 0.1);
+        }
+
+        img {
+            width: toRem(20);
+            height: toRem(20);
         }
     }
 
@@ -102,6 +113,8 @@
         border-radius: 0 50% 50% 0;
         background-color: rgba($primary, 0.05);
         display: none;
+        color: $primary;
+        font-size: toRem(20);
     }
 
     // .nav-window__search-input
@@ -154,33 +167,134 @@
         }
     }
 
-    // .nav-window__option
-
-    &__option {
-    }
-
     // .nav-window__body
 
     &__body {
+        width: 100%;
+        height: 330px;
+        overflow-y: auto;
+        overflow-x: hidden;
     }
 
-    // .nav-window__content
-
+    // .nav-window__conten
     &__content {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: toRem(20);
+        // overflow:auto;
+    }
+
+    // .nav-window__card
+    &__card {
+        width: toRem(210);
+        height: toRem(220);
+        position: relative;
+
+        ._icon-location-full::before {
+            color: white;
+            transform: translateX(10px);
+            padding: 0;
+        }
+    }
+
+    // .nav-window__carg-img
+    &__carg-img {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+
+        img {
+            object-fit: fill;
+            object-position: 50% 50%;
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+    // .nav-window__card-title
+
+    &__card-title {
+        position: absolute;
+        top: 60%;
+        padding: toRem(0) toRem(10) toRem(0) toRem(10);
+        width: 100%;
+        color: white;
+        font-size: toRem(14);
+        line-height: 100%;
+        font-weight: 600;
+        filter: drop-shadow(1px 1px 6px $primary);
+    }
+
+    // .nav-window__card-address
+
+    &__card-address {
+        position: absolute;
+        top: 70%;
+        padding: toRem(0) toRem(15) toRem(0) toRem(30);
+        width: 100%;
+        color: white;
+        font-size: toRem(14);
+        line-height: 100%;
+        font-weight: 600;
+        filter: drop-shadow(1px 1px 6px $primary);
     }
 }
+
+._icon-trees::before,
+._icon-restaurants::before,
+._icon-hotel::before {
+    font-size: toRem(28);
+    position: absolute;
+    top: calc(50% - 14px);
+    left: calc(50% - 14px);
+}
+._icon-trees {
+    color: green;
+    transition: all 0.2 ease-in-out;
+    &:hover {
+        color: white;
+    }
+}
+
+._icon-restaurants {
+    color: red;
+    transition: all 0.2 ease-in-out;
+    &:hover {
+        color: white;
+    }
+}
+
+._icon-hotel {
+    color: orange;
+    transition: all 0.2 ease-in-out;
+    &:hover {
+        color: white;
+    }
+}
+
 .option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: toRem(7);
+    &__sub-title {
+        font-size: toRem(12);
+        color: rgba($primary, 0.9);
+        text-align: center;
+    }
+
     &__hotels,
     &__parks,
     &__restaurants {
         width: toRem(60);
         height: toRem(60);
         border-radius: 50%;
+        position: relative;
     }
 
     // .option__hotels
     &__hotels {
-        background-color: rgba(orange, 0.4);
+        background-color: rgba(orange, 0.2);
         transition: all 0.2s ease-in-out;
         &:hover {
             background-color: rgba(orange, 1);
@@ -188,7 +302,7 @@
     }
     // .option__parks
     &__parks {
-        background-color: rgba(green, 0.4);
+        background-color: rgba(green, 0.2);
         transition: all 0.2s ease-in-out;
         &:hover {
             background-color: rgba(green, 1);
@@ -197,7 +311,7 @@
 
     // .option__restaurants
     &__restaurants {
-        background-color: rgba(red, 0.4);
+        background-color: rgba(red, 0.2);
         transition: all 0.2s ease-in-out;
         &:hover {
             background-color: rgba(red, 1);
@@ -240,8 +354,6 @@
             height: 100%;
             width: 100%;
         }
-        
-        
     }
 
     // .place-card__place-title
@@ -258,7 +370,6 @@
     // .place-card__phone-number
 
     &__phone-number {
-        
         font-size: toRem(14);
         font-weight: 500;
         color: $primary;

@@ -12,9 +12,9 @@ import { placeCredentials } from '../../place.model';
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
-export class MapComponent implements OnInit , AfterViewInit {
+export class MapComponent implements OnInit {
   zoom = 12;
-  center = {lat: 49.8382600, lng: 24.0232400,}
+  center = {lat: 49.8382600, lng: 24.0232400}
   options: google.maps.MapOptions = {
     // mapTypeId: 'hybrid',
     disableDoubleClickZoom: true,
@@ -37,8 +37,13 @@ export class MapComponent implements OnInit , AfterViewInit {
   btnShowSearch = false;
   btnNavWindowOpen = false;
   markers : any = [];
-  markersChanged = true;
+  places:any = []
+   
   
+  constructor(private mapService: MapService){}
+  ngOnInit(): void {
+  }
+
   openNavWindow(){
     if(!this.btnNavWindowOpen){
       document.getElementById('navWindow')?.classList.add("map-nav__nav-window--open");
@@ -95,58 +100,34 @@ export class MapComponent implements OnInit , AfterViewInit {
       console.log(place);
     }
 
+
+  searchPetFriendlyPlaces(type: string, icon: string) {
+    let center = new google.maps.LatLng(49.8382600, 24.0232400);
+    this.mapService.searchPlaces(this.map.googleMap!, center, 10000 ,type)
+      .then(results => {
+        this.clearMarkers();
+        results.forEach(result => {
+          const marker = new google.maps.Marker({
+            position: result.geometry?.location,
+            map: this.map.googleMap!,
+            icon: icon,
+            title: result.name,
+            animation: google.maps.Animation.DROP,
+          });
+          this.markers.push(marker);
+          this.places.push(result);
+        });
+      })
+      .catch(error => {
+        console.error('Error fetching places:', error);
+      });
+  }
+
+  clearMarkers() {
+    this.markers.forEach((marker: google.maps.Marker) => marker.setMap(null));
+    this.markers = [];
+  }
   
-
-  restaurantsNames = ["Добрий Друг паб Львів Pub Lviv", "Hashtag", "Moment"];
-  parksNames = ["Парк Погулянка Львів", "Стрийський Парк ЛЬвів", "Студентський парк Львів"];
-  hotelsNames = ["міні-готель Особняк Львів","Готель Динамо","Готель Жорж Львів"]
-
-  searchPlaces(categoty: string){
-    this.markers.splice(0,this.markers.length);
-    let searchPlaces: string[];
-    const placesService = new google.maps.places.PlacesService(this.map.googleMap!);
-    if(categoty === 'restaurants'){ searchPlaces = this.restaurantsNames }
-    else if (categoty === 'parks'){ searchPlaces = this.parksNames }
-    else if (categoty === 'hotels'){ searchPlaces = this.hotelsNames }
-
-
-    searchPlaces!.forEach(placeName => {
-      const request = {
-        query: placeName,
-        fields: ["name", "geometry"]
-      };
-      placesService.findPlaceFromQuery(
-        request,
-        (
-          results: google.maps.places.PlaceResult[] | null,
-          status: google.maps.places.PlacesServiceStatus
-        ) => {
-          if (status === google.maps.places.PlacesServiceStatus.OK && results) {
-            for (let i = 0; i < results.length; i++) {
-              this.markers.push({
-                position: {
-                  lat: results[i].geometry?.location?.lat(),
-                  lng: results[i].geometry?.location?.lng()
-                },
-                icon: {
-                  url: "../../../../../assets/images/icons/park-location.svg",
-                  scaledSize: new google.maps.Size(30,45),
-                },
-                options: {animation: google.maps.Animation.DROP}
-              })
-            }
-          }
-        }
-      );
-    });
-  }
-
-  ngOnInit(): void {
-  }
-
-  ngAfterViewInit() {
-    
-  }
   
 
   

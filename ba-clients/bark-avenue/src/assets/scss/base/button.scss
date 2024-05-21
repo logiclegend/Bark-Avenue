@@ -16,9 +16,11 @@
 	text-align: center;
 
 	box-shadow: 2px 4px 4px rgba(black, 0.25);
+	transition: all 0.2s ease-in-out;
 
 	@media (any-hover: hover) {
 		&:hover {
+			
 		}
 	}
 
@@ -34,20 +36,30 @@
 	}
 
 	&--orange {
-		max-width: toRem(170);
+		max-width: toRem(160);
 		position: relative;
 		background: $mainOrangeColor;
 		padding: toRem(13) toRem(40) toRem(13) toRem(15);
 		color: white;
+		// border-radius: toRem(25);
+		transition: all 0.2s ease-in-out;
 
-		&._icon-angle::before {
+
+		&._icon-arrow-right::before {
 			position: absolute;
 			font-size: toRem(16);
 			color: white;
 			right: 0;
 			margin-right: toRem(15);
-			transform: rotateZ(-90deg);
+			// border-radius: toRem(40);
+			
 		}
+
+		&:hover{
+			transform: scale(1.02);
+			background-color: $primary;
+		}
+		
 	}
 
 	// @media (max-width: toEm(479.98)) {
